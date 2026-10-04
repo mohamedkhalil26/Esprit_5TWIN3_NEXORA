@@ -58,7 +58,8 @@ class User extends Authenticatable
     }
 
     /**
-     * Initiales affichées dans les avatars (ex. "Hamza Mbarki" => "HM").
+     * Initiales affichées dans les avatars
+     * (ex. "Hamza Mbarki" => "HM").
      */
     public function getInitialesAttribute(): string
     {
@@ -67,5 +68,21 @@ class User extends Authenticatable
             ->take(2)
             ->map(fn ($mot) => mb_strtoupper(mb_substr($mot, 0, 1)))
             ->implode('');
+    }
+
+    /**
+     * Réclamations créées par cet utilisateur.
+     */
+    public function reclamations()
+    {
+        return $this->hasMany(Reclamation::class, 'user_id');
+    }
+
+    /**
+     * Réponses aux réclamations écrites par cet utilisateur.
+     */
+    public function reponsesReclamations()
+    {
+        return $this->hasMany(ReponseReclamation::class, 'user_id');
     }
 }
