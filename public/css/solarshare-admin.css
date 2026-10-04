@@ -1,0 +1,114 @@
+/*
+ * SolarShare — personnalisation du template back office
+ * Template d'origine : AdminLTE 4 https://adminlte.io
+ */
+:root {
+    --ss-green: #2e9e5b;
+    --ss-green-dark: #1b5e3a;
+    --ss-sun: #f6b819;
+    --bs-primary: #2e9e5b;
+    --bs-primary-rgb: 46, 158, 91;
+    --bs-link-color: #2e9e5b;
+    --bs-link-color-rgb: 46, 158, 91;
+    --bs-link-hover-color: #1b5e3a;
+    --bs-link-hover-color-rgb: 27, 94, 58;
+}
+
+.btn-primary {
+    --bs-btn-bg: var(--ss-green);
+    --bs-btn-border-color: var(--ss-green);
+    --bs-btn-hover-bg: var(--ss-green-dark);
+    --bs-btn-hover-border-color: var(--ss-green-dark);
+    --bs-btn-active-bg: var(--ss-green-dark);
+    --bs-btn-active-border-color: var(--ss-green-dark);
+}
+
+.btn-outline-primary {
+    --bs-btn-color: var(--ss-green);
+    --bs-btn-border-color: var(--ss-green);
+    --bs-btn-hover-bg: var(--ss-green);
+    --bs-btn-hover-border-color: var(--ss-green);
+    --bs-btn-active-bg: var(--ss-green-dark);
+}
+
+.text-bg-primary {
+    background-color: var(--ss-green) !important;
+}
+
+.pagination {
+    --bs-pagination-active-bg: var(--ss-green);
+    --bs-pagination-active-border-color: var(--ss-green);
+    --bs-pagination-color: var(--ss-green);
+    margin-bottom: 0;
+}
+
+/* Barre latérale aux couleurs SolarShare */
+.app-sidebar {
+    --bs-body-bg: #12301f;
+    background: linear-gradient(180deg, #12301f 0%, #1b5e3a 100%) !important;
+}
+
+.app-sidebar .sidebar-brand {
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+
+.app-sidebar .brand-link .brand-text {
+    color: #fff;
+    font-weight: 600 !important;
+}
+
+.app-sidebar .brand-link .brand-text span {
+    color: var(--ss-sun);
+}
+
+.app-sidebar .sidebar-menu .nav-link.active,
+.app-sidebar .sidebar-menu > .nav-item.menu-open > .nav-link.active {
+    background-color: var(--ss-sun) !important;
+    color: #2b2100 !important;
+}
+
+.app-sidebar .sidebar-menu .nav-treeview .nav-link.active {
+    background-color: rgba(246, 184, 25, .2) !important;
+    color: #fff !important;
+}
+
+.app-sidebar .nav-header {
+    color: rgba(255, 255, 255, .5) !important;
+    font-size: .75rem;
+    letter-spacing: .08em;
+}
+
+.app-header .avatar,
+.avatar {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .8rem;
+    font-weight: 700;
+    color: #fff;
+    background-color: var(--ss-green);
+}
+
+.table > :not(caption) > * > th {
+    white-space: nowrap;
+}
+
+.table td.actions {
+    white-space: nowrap;
+    width: 1%;
+}
+
+.thumb {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: .5rem;
+}
+
+.detail-list dt {
+    color: #6c757d;
+    font-weight: 500;
+}

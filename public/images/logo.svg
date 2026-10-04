@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="SolarShare">
+  <circle cx="32" cy="32" r="31" fill="#1b5e3a"/>
+  <g stroke="#f6b819" stroke-width="3.2" stroke-linecap="round">
+    <line x1="32" y1="7" x2="32" y2="13"/>
+    <line x1="32" y1="51" x2="32" y2="57"/>
+    <line x1="7" y1="32" x2="13" y2="32"/>
+    <line x1="51" y1="32" x2="57" y2="32"/>
+    <line x1="14.3" y1="14.3" x2="18.5" y2="18.5"/>
+    <line x1="45.5" y1="45.5" x2="49.7" y2="49.7"/>
+    <line x1="14.3" y1="49.7" x2="18.5" y2="45.5"/>
+    <line x1="45.5" y1="18.5" x2="49.7" y2="14.3"/>
+  </g>
+  <circle cx="32" cy="32" r="13" fill="#f6b819"/>
+  <path d="M25 37c0-7 5-12 13-12-1 8-6 13-13 12z" fill="#2e9e5b"/>
+  <path d="M25 37l8-7" stroke="#1b5e3a" stroke-width="1.6" stroke-linecap="round"/>
+</svg>

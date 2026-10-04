@@ -1,0 +1,265 @@
+/*
+ * SolarShare — personnalisation du template front office
+ * Template d'origine : Creative (Start Bootstrap) https://startbootstrap.com/theme/creative
+ */
+:root {
+    --ss-green: #2e9e5b;
+    --ss-green-rgb: 46, 158, 91;
+    --ss-green-dark: #1b5e3a;
+    --ss-sun: #f6b819;
+    --ss-sun-rgb: 246, 184, 25;
+    --ss-cream: #f7f9f4;
+    --bs-primary: var(--ss-green);
+    --bs-primary-rgb: var(--ss-green-rgb);
+    --bs-link-color: var(--ss-green);
+    --bs-link-hover-color: var(--ss-green-dark);
+}
+
+body {
+    background-color: #fff;
+}
+
+a {
+    color: var(--ss-green);
+}
+
+a:hover {
+    color: var(--ss-green-dark);
+}
+
+/* ---------- Boutons ---------- */
+.btn-primary {
+    --bs-btn-bg: var(--ss-green);
+    --bs-btn-border-color: var(--ss-green);
+    --bs-btn-hover-bg: var(--ss-green-dark);
+    --bs-btn-hover-border-color: var(--ss-green-dark);
+    --bs-btn-active-bg: var(--ss-green-dark);
+    --bs-btn-active-border-color: var(--ss-green-dark);
+    --bs-btn-disabled-bg: var(--ss-green);
+    --bs-btn-disabled-border-color: var(--ss-green);
+}
+
+.btn-outline-primary {
+    --bs-btn-color: var(--ss-green);
+    --bs-btn-border-color: var(--ss-green);
+    --bs-btn-hover-bg: var(--ss-green);
+    --bs-btn-hover-border-color: var(--ss-green);
+    --bs-btn-active-bg: var(--ss-green-dark);
+    --bs-btn-active-border-color: var(--ss-green-dark);
+}
+
+.btn-sun {
+    --bs-btn-color: #2b2100;
+    --bs-btn-bg: var(--ss-sun);
+    --bs-btn-border-color: var(--ss-sun);
+    --bs-btn-hover-color: #2b2100;
+    --bs-btn-hover-bg: #e0a40c;
+    --bs-btn-hover-border-color: #e0a40c;
+    --bs-btn-active-bg: #e0a40c;
+}
+
+.text-sun {
+    color: var(--ss-sun) !important;
+}
+
+.bg-sun {
+    background-color: var(--ss-sun) !important;
+}
+
+.bg-cream {
+    background-color: var(--ss-cream) !important;
+}
+
+hr.divider {
+    background-color: var(--ss-sun);
+}
+
+/* Remplace l'orange d'origine du template par le vert SolarShare */
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+    border-color: #8fd0a9;
+    box-shadow: 0 0 0 .25rem rgba(var(--ss-green-rgb), .25);
+}
+
+.form-check-input:checked {
+    background-color: var(--ss-green);
+    border-color: var(--ss-green);
+}
+
+.dropdown-menu {
+    --bs-dropdown-link-active-bg: var(--ss-green);
+}
+
+.link-primary {
+    color: var(--ss-green) !important;
+}
+
+/* ---------- Navigation ---------- */
+#mainNav .navbar-brand img {
+    height: 34px;
+    margin-right: .5rem;
+}
+
+#mainNav .navbar-nav .nav-item .nav-link:hover,
+#mainNav .navbar-nav .nav-item .nav-link:active,
+#mainNav .navbar-nav .nav-item .nav-link.active {
+    color: var(--ss-green) !important;
+}
+
+@media (min-width: 992px) {
+    #mainNav .navbar-nav .nav-item .nav-link:hover,
+    #mainNav .navbar-nav .nav-item .nav-link.active {
+        color: var(--ss-sun) !important;
+    }
+
+    #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link:hover,
+    #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link.active {
+        color: var(--ss-green) !important;
+    }
+
+    #mainNav.navbar-shrink .navbar-brand:hover {
+        color: var(--ss-green);
+    }
+}
+
+#mainNav .dropdown-menu {
+    font-family: "Merriweather Sans", sans-serif;
+    font-size: .9rem;
+}
+
+#mainNav .btn-nav {
+    padding: .35rem 1rem;
+    border-radius: 2rem;
+    font-size: .85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* ---------- Bannière d'accueil ---------- */
+header.masthead {
+    background:
+        radial-gradient(circle at 80% 20%, rgba(var(--ss-sun-rgb), .55) 0, rgba(var(--ss-sun-rgb), 0) 30%),
+        linear-gradient(135deg, rgba(27, 94, 58, .95) 0%, rgba(46, 158, 91, .88) 55%, rgba(19, 70, 80, .95) 100%);
+}
+
+header.masthead h1 span {
+    color: var(--ss-sun);
+}
+
+/* ---------- En-tête des pages internes ---------- */
+.page-header-ss {
+    padding: 9rem 0 3.5rem;
+    color: #fff;
+    text-align: center;
+    background:
+        radial-gradient(circle at 85% 10%, rgba(var(--ss-sun-rgb), .45) 0, rgba(var(--ss-sun-rgb), 0) 28%),
+        linear-gradient(135deg, var(--ss-green-dark) 0%, var(--ss-green) 100%);
+}
+
+.page-header-ss h1 {
+    font-weight: 700;
+}
+
+.page-header-ss p {
+    color: rgba(255, 255, 255, .8);
+    margin-bottom: 0;
+}
+
+.page-header-ss hr.divider {
+    margin: 1rem auto;
+}
+
+.page-header-ss .breadcrumb {
+    justify-content: center;
+    margin: 0;
+}
+
+.page-header-ss .breadcrumb a,
+.page-header-ss .breadcrumb-item.active,
+.page-header-ss .breadcrumb-item + .breadcrumb-item::before {
+    color: rgba(255, 255, 255, .8);
+}
+
+/* ---------- Cartes ---------- */
+.card-ss {
+    border: 0;
+    border-radius: 1rem;
+    box-shadow: 0 .35rem 1.2rem rgba(0, 0, 0, .07);
+    transition: transform .2s ease, box-shadow .2s ease;
+    overflow: hidden;
+}
+
+.card-ss:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 .75rem 1.8rem rgba(0, 0, 0, .12);
+}
+
+.card-ss .card-img-top {
+    height: 190px;
+    object-fit: cover;
+}
+
+.card-ss .placeholder-visual {
+    height: 190px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: #fff;
+    background: linear-gradient(135deg, var(--ss-green) 0%, var(--ss-green-dark) 100%);
+}
+
+.form-card {
+    border: 0;
+    border-radius: 1rem;
+    box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .08);
+}
+
+.step-icon {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--ss-green-dark);
+    background: rgba(var(--ss-sun-rgb), .25);
+}
+
+/* ---------- Messages flash ---------- */
+.flash-stack {
+    position: fixed;
+    top: 5.5rem;
+    right: 1rem;
+    z-index: 1080;
+    max-width: 380px;
+}
+
+/* ---------- Pied de page ---------- */
+.footer-ss {
+    background-color: #12301f;
+    color: rgba(255, 255, 255, .75);
+}
+
+.footer-ss a {
+    color: rgba(255, 255, 255, .85);
+    text-decoration: none;
+}
+
+.footer-ss a:hover {
+    color: var(--ss-sun);
+}
+
+.footer-ss h6 {
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+.pagination {
+    --bs-pagination-active-bg: var(--ss-green);
+    --bs-pagination-active-border-color: var(--ss-green);
+    --bs-pagination-color: var(--ss-green);
+}
