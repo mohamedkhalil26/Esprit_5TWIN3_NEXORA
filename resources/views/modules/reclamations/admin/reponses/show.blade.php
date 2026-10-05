@@ -3,10 +3,10 @@
 @section('title', 'Réponse n°'.$reponse->id)
 
 @section('breadcrumb-data')
-    @json([
+    {!! json_encode([
         ['label' => 'Réponses', 'url' => route('admin.reponses.index')],
         ['label' => 'N°'.$reponse->id, 'active' => true],
-    ])
+    ]) !!}
 @endsection
 
 @section('content')

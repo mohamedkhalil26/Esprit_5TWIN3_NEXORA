@@ -3,10 +3,10 @@
 @section('title', 'Réclamation n°'.$reclamation->id)
 
 @section('breadcrumb-data')
-    @json([
+    {!! json_encode([
         ['label' => 'Réclamations', 'url' => route('admin.reclamations.index')],
         ['label' => 'N°'.$reclamation->id, 'active' => true],
-    ])
+    ]) !!}
 @endsection
 
 @section('content')
@@ -87,7 +87,6 @@
             </x-admin.card>
         </div>
 
-
         <div class="col-lg-7">
 
             {{-- Jointure 1-N : fil des réponses --}}
@@ -150,7 +149,6 @@
 
                 @endforelse
 
-
                 <x-slot:footer>
 
                     <form method="POST"
@@ -183,7 +181,6 @@
                             @enderror
 
                         </div>
-
 
                         <div class="d-flex gap-2 align-items-end">
 

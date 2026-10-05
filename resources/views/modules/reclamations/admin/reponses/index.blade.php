@@ -3,9 +3,9 @@
 @section('title', 'Réponses aux réclamations')
 
 @section('breadcrumb-data')
-    @json([
+    {!! json_encode([
         ['label' => 'Réponses', 'active' => true],
-    ])
+    ]) !!}
 @endsection
 
 @section('content')

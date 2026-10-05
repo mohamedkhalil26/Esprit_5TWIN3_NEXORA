@@ -3,10 +3,10 @@
 @section('title', 'Nouvelle réclamation')
 
 @section('breadcrumb-data')
-    @json([
+    {!! json_encode([
         ['label' => 'Réclamations', 'url' => route('admin.reclamations.index')],
         ['label' => 'Nouvelle', 'active' => true],
-    ])
+    ]) !!}
 @endsection
 
 @section('content')

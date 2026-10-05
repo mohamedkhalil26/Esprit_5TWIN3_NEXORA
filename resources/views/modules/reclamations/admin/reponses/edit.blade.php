@@ -3,11 +3,11 @@
 @section('title', 'Modifier la réponse')
 
 @section('breadcrumb-data')
-    @json([
+    {!! json_encode([
         ['label' => 'Réponses', 'url' => route('admin.reponses.index')],
         ['label' => 'N°'.$reponse->id, 'url' => route('admin.reponses.show', $reponse)],
         ['label' => 'Modifier', 'active' => true],
-    ])
+    ]) !!}
 @endsection
 
 @section('content')
