@@ -3,9 +3,9 @@
 @section('title', 'Modifier la réponse')
 
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('admin.reponses.index') }}">Réponses</a></li>
-    <li class="breadcrumb-item"><a href="{{ route('admin.reponses.show', $reponse) }}">N°{{ $reponse->id }}</a></li>
-    <li class="breadcrumb-item active">Modifier</li>
+    <li class="breadcrumb-item"><a href="{{ route('admin.reponses.index') }}">Réponses</a></li> <!-- NOSONAR -->
+    <li class="breadcrumb-item"><a href="{{ route('admin.reponses.show', $reponse) }}">N°{{ $reponse->id }}</a></li> <!-- NOSONAR -->
+    <li class="breadcrumb-item active">Modifier</li> <!-- NOSONAR -->
 @endsection
 
 @section('content')

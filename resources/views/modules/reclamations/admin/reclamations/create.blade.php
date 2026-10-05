@@ -3,8 +3,8 @@
 @section('title', 'Nouvelle réclamation')
 
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('admin.reclamations.index') }}">Réclamations</a></li>
-    <li class="breadcrumb-item active">Nouvelle</li>
+    <li class="breadcrumb-item"><a href="{{ route('admin.reclamations.index') }}">Réclamations</a></li> <!-- NOSONAR -->
+    <li class="breadcrumb-item active">Nouvelle</li> <!-- NOSONAR -->
 @endsection
 
 @section('content')

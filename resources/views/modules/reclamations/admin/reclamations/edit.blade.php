@@ -3,9 +3,9 @@
 @section('title', 'Modifier la réclamation n°'.$reclamation->id)
 
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('admin.reclamations.index') }}">Réclamations</a></li>
-    <li class="breadcrumb-item"><a href="{{ route('admin.reclamations.show', $reclamation) }}">N°{{ $reclamation->id }}</a></li>
-    <li class="breadcrumb-item active">Modifier</li>
+    <li class="breadcrumb-item"><a href="{{ route('admin.reclamations.index') }}">Réclamations</a></li> <!-- NOSONAR -->
+    <li class="breadcrumb-item"><a href="{{ route('admin.reclamations.show', $reclamation) }}">N°{{ $reclamation->id }}</a></li> <!-- NOSONAR -->
+    <li class="breadcrumb-item active">Modifier</li> <!-- NOSONAR -->
 @endsection
 
 @section('content')

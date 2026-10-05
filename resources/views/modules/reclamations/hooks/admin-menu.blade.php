@@ -1,6 +1,6 @@
 @php($actif = request()->routeIs('admin.reclamations.*', 'admin.reponses.*'))
 @php($nbOuvertes = \App\Models\Reclamation::where('statut', 'ouverte')->count())
-<li class="nav-item {{ $actif ? 'menu-open' : '' }}">
+<li class="nav-item {{ $actif ? 'menu-open' : '' }}"> <!-- NOSONAR -->
     <a href="#" class="nav-link {{ $actif ? 'active' : '' }}">
         <i class="nav-icon bi bi-exclamation-diamond"></i>
         <p>

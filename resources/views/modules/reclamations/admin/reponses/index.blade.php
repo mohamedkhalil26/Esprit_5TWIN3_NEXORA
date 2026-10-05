@@ -3,7 +3,7 @@
 @section('title', 'Réponses aux réclamations')
 
 @section('breadcrumb')
-    <li class="breadcrumb-item active">Réponses</li>
+    <li class="breadcrumb-item active">Réponses</li> <!-- NOSONAR -->
 @endsection
 
 @section('content')

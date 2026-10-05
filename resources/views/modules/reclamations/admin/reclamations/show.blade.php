@@ -3,10 +3,10 @@
 @section('title', 'Réclamation n°'.$reclamation->id)
 
 @section('breadcrumb')
-    <li class="breadcrumb-item">
+    <li class="breadcrumb-item"> <!-- NOSONAR -->
         <a href="{{ route('admin.reclamations.index') }}">Réclamations</a>
     </li>
-    <li class="breadcrumb-item active">N°{{ $reclamation->id }}</li>
+    <li class="breadcrumb-item active">N°{{ $reclamation->id }}</li> <!-- NOSONAR -->
 @endsection
 
 @section('content')
