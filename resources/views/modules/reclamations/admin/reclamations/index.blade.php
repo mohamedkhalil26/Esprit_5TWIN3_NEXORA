@@ -2,8 +2,10 @@
 
 @section('title', 'Réclamations')
 
-@section('breadcrumb')
-    <li class="breadcrumb-item active">Réclamations</li> <!-- NOSONAR -->
+@section('breadcrumb-data')
+    @json([
+        ['label' => 'Réclamations', 'active' => true],
+    ])
 @endsection
 
 @section('content')

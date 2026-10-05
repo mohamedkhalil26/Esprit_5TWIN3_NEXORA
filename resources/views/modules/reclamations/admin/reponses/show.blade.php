@@ -2,9 +2,11 @@
 
 @section('title', 'Réponse n°'.$reponse->id)
 
-@section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('admin.reponses.index') }}">Réponses</a></li> <!-- NOSONAR -->
-    <li class="breadcrumb-item active">N°{{ $reponse->id }}</li> <!-- NOSONAR -->
+@section('breadcrumb-data')
+    @json([
+        ['label' => 'Réponses', 'url' => route('admin.reponses.index')],
+        ['label' => 'N°'.$reponse->id, 'active' => true],
+    ])
 @endsection
 
 @section('content')

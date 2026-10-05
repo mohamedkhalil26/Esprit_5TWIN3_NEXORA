@@ -2,11 +2,11 @@
 
 @section('title', 'Réclamation n°'.$reclamation->id)
 
-@section('breadcrumb')
-    <li class="breadcrumb-item"> <!-- NOSONAR -->
-        <a href="{{ route('admin.reclamations.index') }}">Réclamations</a>
-    </li>
-    <li class="breadcrumb-item active">N°{{ $reclamation->id }}</li> <!-- NOSONAR -->
+@section('breadcrumb-data')
+    @json([
+        ['label' => 'Réclamations', 'url' => route('admin.reclamations.index')],
+        ['label' => 'N°'.$reclamation->id, 'active' => true],
+    ])
 @endsection
 
 @section('content')
