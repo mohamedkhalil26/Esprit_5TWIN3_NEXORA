@@ -21,7 +21,13 @@
 
                 {{-- Menus ajoutés par les modules (hooks/admin-menu.blade.php) --}}
                 @forelse (\App\Support\Modules::hooks('admin-menu') as $hook)
-                    @include($hook)
+                    @if ($hook === 'modules.reclamations.hooks.admin-menu')
+                        <li class="nav-item {{ request()->routeIs('admin.reclamations.*', 'admin.reponses.*') ? 'menu-open' : '' }}">
+                            @include($hook)
+                        </li>
+                    @else
+                        @include($hook)
+                    @endif
                 @empty
                     <li class="nav-item">
                         <span class="nav-link text-white-50"><i class="nav-icon bi bi-puzzle"></i><p>Aucun module intégré</p></span>

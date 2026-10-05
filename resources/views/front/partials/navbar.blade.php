@@ -45,7 +45,13 @@
 
                             {{-- Liens personnels ajoutés par les modules (hooks/user-menu.blade.php) --}}
                             @foreach (\App\Support\Modules::hooks('user-menu') as $hook)
-                                @include($hook)
+                                @if ($hook === 'modules.reclamations.hooks.user-menu')
+                                    <li>
+                                        @include($hook)
+                                    </li>
+                                @else
+                                    @include($hook)
+                                @endif
                             @endforeach
 
                             <li>
