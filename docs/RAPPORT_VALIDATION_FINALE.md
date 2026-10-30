@@ -1,5 +1,7 @@
 # SolarShare — Rapport de préparation à la validation finale
 
+> **État final après essais externes autorisés :** cinq réponses OpenRouter réelles validées via les formulaires Laravel ; recommandations et contenus relus. Quatre messages fictifs reçus dans Mailpit sur deux passages. La première CI GitHub de la branche autorisée a réussi. Suite étendue à **28 tests / 184 assertions**. Les limites « clé absente / CI non exécutée » des états historiques ci-dessous sont levées. Le scan physique du QR, la concurrence MySQL et le déploiement staging restent à faire. Voir `docs/FINALISATION_AUTOMATIQUE.md` et les preuves JSON pour le détail.
+
 > **Finalisation automatique ultérieure le 30 octobre :** Mailpit a été installé et configuré. Deux notifications ont été réellement reçues, leurs liens utilisés, et 13 contrôles SMTP/2FA supplémentaires ont réussi. Le PDF DevOps a été généré et contrôlé. La clé OpenRouter manque toujours ; aucun appel IA réel n’est revendiqué. Voir `docs/FINALISATION_AUTOMATIQUE.md` pour l’état courant ; les limites SMTP indiquées dans la recette historique ci-dessous sont désormais levées pour la réception locale uniquement.
 
 ## Recette complémentaire du 30 octobre 2026

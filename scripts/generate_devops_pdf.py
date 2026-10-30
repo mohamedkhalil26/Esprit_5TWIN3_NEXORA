@@ -93,7 +93,7 @@ def create_pdf(images):
         pdfmetrics.registerFont(TTFont(name, 'C:/Windows/Fonts/' + file))
     pdfmetrics.registerFontFamily('Arial', normal='Arial', bold='Arial-Bold', italic='Arial-Italic', boldItalic='Arial-BoldItalic')
     styles = {
-        'body': ParagraphStyle('Body', fontName='Arial', fontSize=10, leading=15, textColor=TEXT, spaceAfter=8),
+        'body': ParagraphStyle('Body', fontName='Arial', fontSize=10, leading=15, textColor=TEXT, spaceAfter=8, allowWidows=0, allowOrphans=0),
         'section': ParagraphStyle('Section', fontName='Arial-Bold', fontSize=17, leading=22, textColor=GREEN, spaceBefore=18, spaceAfter=12, keepWithNext=True),
         'sub': ParagraphStyle('Sub', fontName='Arial-Bold', fontSize=12, leading=17, textColor=GREEN, spaceBefore=12, spaceAfter=8, keepWithNext=True),
         'code': ParagraphStyle('Code', fontName='Mono', fontSize=8, leading=11, textColor=TEXT, leftIndent=10, rightIndent=8, spaceAfter=5),
@@ -110,10 +110,10 @@ def create_pdf(images):
     ])
     story = [Spacer(1, 92), Paragraph('SolarShare', ParagraphStyle('Cover',fontName='Arial-Bold',fontSize=40,leading=48,textColor=GREEN)), Spacer(1,15), Paragraph('Dossier DevOps<br/>Validation finale', ParagraphStyle('CoverSub',fontName='Arial',fontSize=25,leading=33,textColor=TEXT)), Spacer(1,25)]
     status = [
-        ['27 tests / 181 assertions', '70 contrôles HTTP réels'],
-        ['2 emails reçus dans Mailpit', '13 contrôles SMTP et 2FA réussis'],
-        ['OpenRouter : clé à renseigner', 'Aucun résultat IA simulé présenté comme réel'],
-        ['CI/CD contrôlé localement', 'Aucun déploiement revendiqué'],
+        ['28 tests / 184 assertions', '70 contrôles HTTP réels'],
+        ['4 emails fictifs dans Mailpit', '13 contrôles SMTP et 2FA réussis'],
+        ['5 assistants IA testés réellement', 'Modèle OpenRouter : openrouter/free'],
+        ['GitHub Actions : première CI réussie', 'Aucun déploiement revendiqué'],
     ]
     table = Table([[Paragraph(inline(x),styles['body']) for x in row] for row in status], colWidths=[(w-96)/2]*2)
     table.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,-1),colors.HexColor('#f0f5ef')),('BOX',(0,0),(-1,-1),0.6,colors.HexColor('#cad9cd')),('VALIGN',(0,0),(-1,-1),'TOP'),('LEFTPADDING',(0,0),(-1,-1),13),('RIGHTPADDING',(0,0),(-1,-1),13),('TOPPADDING',(0,0),(-1,-1),11),('BOTTOMPADDING',(0,0),(-1,-1),8)]))

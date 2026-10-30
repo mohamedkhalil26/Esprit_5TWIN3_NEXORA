@@ -3,5 +3,5 @@
 return [
     'key' => env('OPENROUTER_API_KEY'),
     'model' => env('OPENROUTER_MODEL', 'openrouter/free'),
-    'timeout' => 30,
+    'timeout' => 60,
 ];

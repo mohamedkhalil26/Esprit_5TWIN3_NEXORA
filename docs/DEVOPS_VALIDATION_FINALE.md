@@ -1,6 +1,6 @@
 # SolarShare — Dossier DevOps de validation finale
 
-> **Actualisation du 30 octobre 2026 :** 27 tests / 181 assertions réussis, 70 contrôles HTTP et 13 contrôles supplémentaires SMTP/2FA réussis. Mailpit 1.32.0 est installé et démarré sur les interfaces locales uniquement ; deux notifications ont été réellement reçues et leurs liens vérifiés. Les workflows ont passé actionlint 1.7.12, sans ShellCheck/Pyflakes ; le script a passé `bash -n`. La clé OpenRouter reste absente : aucun résultat IA réel n’est revendiqué. Le commit local est préparé séparément de tout push. Aucun run GitHub ni déploiement effectué.
+> **Actualisation du 30 octobre 2026 :** 28 tests / 184 assertions réussis, 70 contrôles HTTP et 13 contrôles supplémentaires SMTP/2FA réussis. Les cinq assistants ont produit une réponse OpenRouter réelle validée par Laravel. Mailpit contient quatre messages fictifs issus de deux passages ; les liens de vérification et de réinitialisation ont fonctionné. La branche de validation a été poussée après autorisation et la première CI GitHub est réussie. Aucun déploiement n’a été effectué.
 
 **Module :** Applications Web Avancées — ESPRIT
 **Échéance :** semaine du 2 novembre 2026
@@ -28,7 +28,7 @@ Le processus DevOps vise des livraisons reproductibles, des régressions détect
 | Google2FA / BaconQrCode | TOTP, vérification anti-réutilisation et QR code SVG généré localement |
 | SSH / Nginx / PHP-FPM | Cible Linux paramétrable pour le déploiement |
 
-Les changements et la préparation du commit restent locaux. Aucun push, envoi à l’enseignant ou déploiement en production n’a été effectué. Le dépôt distant est configuré ; son utilisation en écriture et l’exécution de GitHub Actions restent soumises à l’autorisation du propriétaire.
+Le propriétaire a autorisé le push de la branche `codex/validation-finale`. Le commit initial `cfdfdab` a été poussé et la CI GitHub a terminé avec succès : [exécution 41058445258](https://github.com/mohamedkhalil26/Esprit_5TWIN3_NEXORA/actions/runs/41058445258). Les corrections de recette sont livrées sur cette même branche et font l’objet d’une nouvelle vérification CI. Aucun envoi à l’enseignant ni déploiement en production n’a été effectué.
 
 ## 3. Processus DevOps
 
@@ -124,13 +124,15 @@ Les verrous `lockForUpdate` ont été ajoutés aux services de réservation, par
 
 Les tests de l’IA utilisent `Http::fake` et empêchent les requêtes imprévues. Ils ne prouvent ni la disponibilité ni la qualité d’un modèle gratuit à un instant donné. L’assistant refuse les identifiants d’équipement absents du catalogue candidat et ne crée aucune réservation. Le catalogue envoyé est limité aux 40 candidats les moins chers admissibles. Les sélecteurs administratifs présentent les 100 derniers contenus.
 
+En complément des mocks, cinq appels réels ont été effectués depuis les formulaires authentifiés de l’instance isolée. Les cinq réponses ont été validées. Les recommandations ont été recoupées avec la base : identifiants existants, propriétaire distinct, budget respecté et absence de chevauchement aux dates de test. Les propositions de catégorie, priorité, programme et rédaction ont été relues ; aucune n’a été publiée ou appliquée automatiquement.
+
 ## 6. Configuration des services externes
 
 ### Emails et authentification
 
 Le transport principal a été configuré automatiquement vers Mailpit : `MAIL_MAILER=smtp`, schéma SMTP, hôte `127.0.0.1`, port `1025`, sans identifiant. L’interface Mailpit est liée à `127.0.0.1:8025`. Son binaire officiel et sa base de messages sont dans le stockage privé ignoré par Git. Aucun relais externe n’est configuré. Le cache Laravel a été vidé après modification ; aucune clé API n’a été modifiée.
 
-Deux messages ont été reçus par SMTP pour un nouveau compte fictif : vérification d’adresse et réinitialisation du mot de passe. Le lien signé a marqué l’adresse vérifiée ; le lien de réinitialisation a permis une nouvelle connexion avec le nouveau mot de passe. Les métadonnées non sensibles et les 13 contrôles associés sont consignés dans `docs/resultats-smtp-2fa.json`. Les tokens et codes ne sont pas inclus. Cela valide une réception locale dans Mailpit, pas la livraison sur Internet.
+Mailpit contient quatre messages fictifs issus de deux passages complets : deux vérifications d’adresse et deux réinitialisations. Le dernier passage a reçu deux nouveaux messages, validé le lien signé et permis une connexion après réinitialisation. Les métadonnées non sensibles et les 13 contrôles du dernier passage sont consignés dans `docs/resultats-smtp-2fa.json`. Les tokens et codes ne sont pas inclus. Cela valide une réception locale dans Mailpit, pas la livraison sur Internet.
 
 Vérifier `APP_URL` : il sert à générer les liens signés et les liens de réinitialisation. La recette isolée utilise `http://127.0.0.1:8010`, tandis que l’instance principale conserve son URL habituelle. Les comptes existants non vérifiés doivent passer par `/verifier-email`. Aucun compte historique n’a été modifié ; l’adresse fictive a été vérifiée en ouvrant le lien réellement reçu.
 
@@ -139,11 +141,21 @@ Vérifier `APP_URL` : il sert à générer les liens signés et les liens de ré
 Dans le `.env` privé uniquement :
 
 ```dotenv
-OPENROUTER_API_KEY=<clé privée à renseigner localement>
+OPENROUTER_API_KEY=<valeur privée jamais publiée>
 OPENROUTER_MODEL=openrouter/free
 ```
 
-La clé n’était pas configurée lors des contrôles. Aucun appel IA réel n’a été effectué. Le service utilise un délai de connexion de 5 secondes, un délai total de 30 secondes, une réponse JSON contrôlée et des limites de 5 requêtes par minute et de 100 par jour par utilisateur. Les interruptions, erreurs de quota et réponses invalides produisent un message français ; aucune réponse simulée n’est présentée comme réelle dans l’application.
+La clé a été renseignée par le propriétaire et n’a jamais été affichée ni remplacée. Les cinq assistants ont été testés réellement avec `openrouter/free`. Le service conserve un délai de connexion de 5 secondes ; le délai total a été porté à 60 secondes pour les modèles gratuits. Les limites restent de 5 demandes par minute et de 100 par jour par utilisateur. Les erreurs de quota, interruptions et réponses invalides produisent un message français. Les diagnostics ne contiennent que des codes techniques bornés : aucun corps de requête, prompt ou secret.
+
+| Assistant | Résultat réel obtenu |
+| --- | --- |
+| M1 Équipements | Sélection de trois équipements existants du catalogue fictif, sous le budget journalier |
+| M2 Réservations | Recommandations réellement disponibles pour les deux jours demandés, sous le budget total |
+| M3 Réclamations | Catégorie technique, priorité haute, résumé de la panne de charge et suggestion de diagnostic |
+| M4 Événements | Description et programme en quatre étapes : accueil, présentation, démonstration et échanges |
+| M5 Blog | Titre et résumé, cinq mots-clés et améliorations signalant une répétition et une catégorie incohérente |
+
+Les réponses exactes, limitées aux contenus fictifs, sont dans `docs/resultats-assistants-reels.json`. Les premiers essais ont révélé une erreur TLS cURL 60 : le magasin de certificats de PHP a été configuré vers un bundle CA de confiance déjà installé. La vérification TLS n’a pas été désactivée. Le Blog a aussi révélé une interruption fatale de PHP à 30 secondes ; la limite web locale est maintenant de 90 secondes, supérieure au timeout HTTP contrôlé de 60 secondes. Les serveurs locaux ont été redémarrés. Le propriétaire a restauré sa valeur originale de `APP_KEY` ; l’agent ne l’a pas modifiée et n’a exécuté aucune réinitialisation MySQL.
 
 Les formulaires informent de l’envoi à OpenRouter. Seuls les besoins et les champs utiles du contenu sont transmis ; les identités liées, paiements et pièces jointes sont exclus. Les textes saisis peuvent néanmoins contenir des informations personnelles : les utilisateurs doivent les retirer avant envoi. Les résultats sont échappés dans Blade. Les contenus proposés pour les réclamations, événements et articles ne sont enregistrés qu’après une action explicite de l’administrateur.
 
@@ -202,7 +214,7 @@ Pour vérifier GitHub Actions, pousser seulement après autorisation du proprié
 
 | Vérification | Résultat réellement constaté |
 | --- | --- |
-| PHPUnit | 27 tests réussis, 181 assertions lors de la dernière exécution |
+| PHPUnit | 28 tests réussis, 184 assertions lors de la dernière exécution |
 | Recette HTTP | 70 contrôles réels sur base SQLite séparée, plus 13 contrôles SMTP/2FA |
 | Migration MySQL locale | Nouvelle migration additive exécutée, batch 4 ; anciennes migrations conservées |
 | Photos de profil | Lien `public/storage` créé |
@@ -212,13 +224,13 @@ Pour vérifier GitHub Actions, pousser seulement après autorisation du proprié
 | Bash | Syntaxe de `scripts/deploy.sh` vérifiée avec Git Bash |
 | Pint | Formatage appliqué ; `pint --test` réussi |
 | Navigateur local | Accueil, comparaison réelle de deux équipements, connexion admin de démonstration, profil, assistant administratif, calendrier, estimation à 44 DT sur deux jours et déconnexion contrôlés en vue étroite |
-| SMTP local | Deux messages reçus dans Mailpit ; vérification d’adresse et réinitialisation réellement réussies |
+| SMTP local | Quatre messages fictifs dans Mailpit, dont deux reçus lors du dernier passage ; liens réellement vérifiés |
 | 2FA réelle | Activation, QR local, confirmation, challenge TOTP, récupération à usage unique et désactivation rejoués avec succès |
-| IA réelle | Non exécutée : clé OpenRouter absente pour les cinq modules ; modèle `openrouter/free` confirmé |
-| CI GitHub | Fichiers préparés ; aucune exécution distante revendiquée |
+| IA réelle | Cinq réponses réelles validées via les formulaires Laravel ; modèle `openrouter/free` confirmé |
+| CI GitHub | Première exécution 41058445258 réussie sur le commit cfdfdab ; corrections suivies sur la même branche |
 | CD réel | Non exécuté ; cible, secrets, sauvegarde et autorisation à fournir |
 
-Avant soutenance : renseigner la clé IA localement et effectuer une demande réelle par module, vérifier le scan physique du QR code avec une application TOTP, les écritures concurrentes MySQL et le CD en staging. Le téléchargement privé et les deux formats navigateur ont été contrôlés ; la réception locale SMTP est maintenant vérifiée. Mailpit doit rester démarré pendant la présentation. Ne pas utiliser les mots de passe de démonstration historiques sur un hébergement public.
+Avant soutenance : vérifier le scan physique du QR code avec une application TOTP, les écritures concurrentes MySQL et le CD en staging. Les cinq assistants réels, la réception SMTP locale, les téléchargements privés et les deux formats navigateur ont été contrôlés. Le modèle gratuit peut rester soumis à des quotas et sa disponibilité n’est pas garantie pour une présentation ultérieure. Mailpit doit rester démarré. Ne pas utiliser les mots de passe de démonstration sur un hébergement public.
 
 ## 10. Références techniques
 

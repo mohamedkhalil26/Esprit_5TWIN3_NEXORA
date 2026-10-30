@@ -3,33 +3,74 @@
   "resultats": [
     {
       "module": "equipements",
-      "etat": "non_executé",
-      "erreur": "OPENROUTER_API_KEY non renseignée",
-      "requetes_api": 0
+      "etat": "réponse_réelle_validée_par_Laravel",
+      "http": 200,
+      "propositions": {},
+      "equipements": [
+        {
+          "id": 1,
+          "nom": "Batterie recette 1000 Wh"
+        },
+        {
+          "id": 2,
+          "nom": "Panneau recette 200 W"
+        },
+        {
+          "id": 3,
+          "nom": "Station solaire de démonstration modifiée"
+        }
+      ]
     },
     {
       "module": "locations",
-      "etat": "non_executé",
-      "erreur": "OPENROUTER_API_KEY non renseignée",
-      "requetes_api": 0
+      "etat": "réponse_réelle_validée_par_Laravel",
+      "http": 200,
+      "propositions": {},
+      "equipements": [
+        {
+          "id": 1,
+          "nom": "Batterie recette 1000 Wh"
+        },
+        {
+          "id": 2,
+          "nom": "Panneau recette 200 W"
+        },
+        {
+          "id": 3,
+          "nom": "Station solaire de démonstration modifiée"
+        }
+      ]
     },
     {
       "module": "reclamations",
-      "etat": "non_executé",
-      "erreur": "OPENROUTER_API_KEY non renseignée",
-      "requetes_api": 0
+      "etat": "réponse_réelle_validée_par_Laravel",
+      "http": 200,
+      "propositions": {
+        "categorie": "technique",
+        "priorite": "haute",
+        "resume": "Batterie déchargée après plusieurs heures de branchement",
+        "reponse": "Effectuer un diagnostic des connexions et du système de charge ; en cas de problème persistant, orienter vers une inspection technique approfondie."
+      }
     },
     {
       "module": "evenements",
-      "etat": "non_executé",
-      "erreur": "OPENROUTER_API_KEY non renseignée",
-      "requetes_api": 0
+      "etat": "réponse_réelle_validée_par_Laravel",
+      "http": 200,
+      "propositions": {
+        "description": "Rencontre conviviale autour des énergies renouvelables : démonstrations, échanges entre membres et conseils pratiques pour réduire sa consommation.",
+        "programme": "Accueil des participants\nPrésentation du thème de l’atelier\nDémonstration d’une installation solaire simple\nÉchanges et conseils pratiques"
+      }
     },
     {
       "module": "blog",
-      "etat": "non_executé",
-      "erreur": "OPENROUTER_API_KEY non renseignée",
-      "requetes_api": 0
+      "etat": "réponse_réelle_validée_par_Laravel",
+      "http": 200,
+      "propositions": {
+        "titre": "Conseils solaires pour la démonstration fictive",
+        "resume": "Le document propose des conseils simples pour dimensionner un équipement solaire, choisir des batteries lithium et optimiser l'orientation et l'entretien des panneaux, mais comporte une répétition et une catégorie incohérente.",
+        "mots_cles": "solaire\nbatteries lithium\norientation panneau\nentretien\ndémonstration fictive",
+        "ameliorations": "Supprimer le paragraphe dupliqué sur l'orientation et le nettoyage des panneaux\nCorriger la catégorie 'eolien' en 'solaire'\nPréciser que les conseils s'appliquent à une démonstration fictive\nIndiquer le caractère indicatif des estimations de production"
+      }
     }
   ]
 }

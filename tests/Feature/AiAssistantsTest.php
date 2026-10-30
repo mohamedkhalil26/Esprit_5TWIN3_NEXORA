@@ -11,11 +11,25 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Client\Factory;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Tests\TestCase;
 
 class AiAssistantsTest extends TestCase
 {
     use RefreshDatabase;
+
+    public function test_api_failure_diagnostic_contains_no_secret_or_prompt(): void
+    {
+        Log::spy();
+        Equipement::factory()->create(['disponible' => true, 'prix_jour' => 10]);
+        Http::fake(['openrouter.ai/*' => Http::response([], 503)]);
+        $this->actingAs(User::factory()->create())->post(route('ai.generate', 'equipements'), [
+            'besoin' => 'Une demande fictive qui ne doit pas être journalisée', 'budget' => 100,
+        ])->assertRedirect()->assertSessionHas('error');
+        Log::shouldHaveReceived('warning')->once()->with('openrouter.request_failed', [
+            'type' => 'erreur_http', 'http_status' => 503, 'finish_reason' => null, 'curl_error' => null,
+        ]);
+    }
 
     public function test_blog_ai_validation_respects_normal_article_field_lengths(): void
     {

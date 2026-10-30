@@ -56,16 +56,16 @@
   "emails_recus": [
     {
       "type": "verifier-email",
-      "id_mailpit": "5i92s3YT9hk5CzEaeMm9Yw",
-      "destinataire_fictif": "smtp.recette.1793363384@example.test",
+      "id_mailpit": "7bO4ixpThTbA5d1dAlfHuG",
+      "destinataire_fictif": "smtp.recette.1793364913@example.test",
       "sujet": "Vérifiez votre adresse e-mail — SolarShare"
     },
     {
       "type": "reinitialiser",
-      "id_mailpit": "5Yu8sYBdew7rHZYov2M1A1",
-      "destinataire_fictif": "smtp.recette.1793363384@example.test",
+      "id_mailpit": "3J16Zm1MqeqfNeSMwSSkfx",
+      "destinataire_fictif": "smtp.recette.1793364913@example.test",
       "sujet": "Réinitialisez votre mot de passe — SolarShare"
     }
   ],
-  "messages_mailpit_total": 2
+  "messages_mailpit_total": 4
 }

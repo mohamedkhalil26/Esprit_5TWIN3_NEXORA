@@ -24,7 +24,7 @@
 <label for="besoin">{{ in_array($module, ['equipements','locations']) ? 'Vos besoins ou consignes (usage, puissance, durée, contraintes)' : 'Consignes pour l’analyse et les propositions' }}</label>
 <textarea id="besoin" class="form-control mb-3" name="besoin" minlength="10" maxlength="2000" required rows="3">{{ old('besoin', $data['besoin'] ?? '') }}</textarea>
 <button class="btn btn-success" id="ai-submit">Demander une suggestion IA</button>
-<p id="ai-loading" class="mt-2 d-none" role="status">Analyse en cours… Cela peut prendre jusqu’à 30 secondes.</p>
+<p id="ai-loading" class="mt-2 d-none" role="status">Analyse en cours… Cela peut prendre jusqu’à 60 secondes.</p>
 </form>
 @isset($result)
 <div class="card p-4" aria-live="polite"><h2 class="h4">Résultat IA</h2>

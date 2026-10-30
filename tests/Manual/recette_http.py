@@ -60,7 +60,7 @@ class Client:
             headers['Content-Type'] = 'multipart/form-data; boundary=' + boundary
         req = urllib.request.Request(url, data=payload, headers=headers)
         try:
-            response = self.opener.open(req, timeout=40)
+            response = self.opener.open(req, timeout=75)
         except urllib.error.HTTPError as error:
             response = error
         return response.status, response.url, response.read().decode('utf-8', errors='replace')
