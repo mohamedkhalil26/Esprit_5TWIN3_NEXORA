@@ -35,6 +35,11 @@
                 @endforelse
 
                 <li class="nav-header">SITE</li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('profile.edit') }}"><i class="nav-icon bi bi-person-lock"></i><p>Mon profil et sécurité</p></a></li>
+                <li class="nav-header">ASSISTANTS IA</li>
+                @foreach(\App\Http\Controllers\AiController::MODULES as $module => $label)
+                <li class="nav-item"><a class="nav-link" href="{{ route('ai.show', $module) }}"><i class="nav-icon bi bi-stars"></i><p>{{ $label }}</p></a></li>
+                @endforeach
                 <li class="nav-item">
                     <a href="{{ route('home') }}" class="nav-link" target="_blank">
                         <i class="nav-icon bi bi-globe2"></i>

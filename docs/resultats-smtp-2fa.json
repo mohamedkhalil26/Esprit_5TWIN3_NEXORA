@@ -1,0 +1,71 @@
+{
+  "verifications": [
+    {
+      "verification": "Inscription jetable avec SMTP réel",
+      "resultat": "OK"
+    },
+    {
+      "verification": "Notification de vérification réellement reçue dans Mailpit",
+      "resultat": "OK"
+    },
+    {
+      "verification": "Lien reçu : adresse vérifiée réellement",
+      "resultat": "OK"
+    },
+    {
+      "verification": "QR code TOTP généré localement",
+      "resultat": "OK"
+    },
+    {
+      "verification": "Confirmation TOTP et huit codes de récupération",
+      "resultat": "OK"
+    },
+    {
+      "verification": "Connexion arrêtée au challenge 2FA",
+      "resultat": "OK"
+    },
+    {
+      "verification": "Code TOTP consommé refusé",
+      "resultat": "OK"
+    },
+    {
+      "verification": "Connexion réelle avec nouveau code TOTP",
+      "resultat": "OK"
+    },
+    {
+      "verification": "Connexion réelle par code de récupération",
+      "resultat": "OK"
+    },
+    {
+      "verification": "Réutilisation du code de récupération refusée",
+      "resultat": "OK"
+    },
+    {
+      "verification": "Désactivation protégée effective",
+      "resultat": "OK"
+    },
+    {
+      "verification": "Notification de réinitialisation réellement reçue dans Mailpit",
+      "resultat": "OK"
+    },
+    {
+      "verification": "Lien reçu : réinitialisation et nouvelle connexion",
+      "resultat": "OK"
+    }
+  ],
+  "emails_recus": [
+    {
+      "type": "verifier-email",
+      "id_mailpit": "5i92s3YT9hk5CzEaeMm9Yw",
+      "destinataire_fictif": "smtp.recette.1793363384@example.test",
+      "sujet": "Vérifiez votre adresse e-mail — SolarShare"
+    },
+    {
+      "type": "reinitialiser",
+      "id_mailpit": "5Yu8sYBdew7rHZYov2M1A1",
+      "destinataire_fictif": "smtp.recette.1793363384@example.test",
+      "sujet": "Réinitialisez votre mot de passe — SolarShare"
+    }
+  ],
+  "messages_mailpit_total": 2
+}

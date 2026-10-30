@@ -1,0 +1,24 @@
+# Adapter le domaine et les certificats TLS avant activation.
+server {
+    listen 443 ssl;
+    server_name solarshare.example.org;
+    ssl_certificate /etc/letsencrypt/live/solarshare.example.org/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/solarshare.example.org/privkey.pem;
+    root /srv/solarshare/current/public;
+    index index.php;
+    charset utf-8;
+    client_max_body_size 6m;
+
+    # Les anciennes pièces jointes restent lisibles via le contrôleur autorisé uniquement.
+    location ^~ /uploads/reclamations/ { deny all; }
+    location ~* ^/(uploads|storage)/.*\.(php|phtml|phar)$ { deny all; }
+    location / { try_files $uri $uri/ /index.php?$query_string; }
+    location = /index.php {
+        include fastcgi_params;
+        fastcgi_pass unix:/run/php/php8.3-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+        fastcgi_param DOCUMENT_ROOT $realpath_root;
+    }
+    location ~ \.php$ { return 404; }
+    location ~ /\.(?!well-known).* { deny all; }
+}

@@ -7,6 +7,7 @@ use App\Http\Requests\ParticipationRequest;
 use App\Models\Evenement;
 use App\Models\Participation;
 use App\Models\User;
+use App\Services\ParticipationService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -46,7 +47,7 @@ class ParticipationController extends Controller
 
     public function store(ParticipationRequest $request): RedirectResponse
     {
-        $participation = Participation::create($request->validated());
+        $participation = app(ParticipationService::class)->save($request->validated());
 
         return redirect()
             ->route('admin.evenements.show', $participation->evenement_id)
@@ -70,7 +71,7 @@ class ParticipationController extends Controller
 
     public function update(ParticipationRequest $request, Participation $participation): RedirectResponse
     {
-        $participation->update($request->validated());
+        app(ParticipationService::class)->save($request->validated(), $participation);
 
         return redirect()
             ->route('admin.participations.show', $participation)

@@ -65,4 +65,5 @@
             </div>
         </div>
     </section>
+@include('modules.reclamations.partials.history')
 @endsection

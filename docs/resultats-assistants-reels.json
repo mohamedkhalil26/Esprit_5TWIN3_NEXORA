@@ -1,0 +1,35 @@
+{
+  "modele": "openrouter/free",
+  "resultats": [
+    {
+      "module": "equipements",
+      "etat": "non_executé",
+      "erreur": "OPENROUTER_API_KEY non renseignée",
+      "requetes_api": 0
+    },
+    {
+      "module": "locations",
+      "etat": "non_executé",
+      "erreur": "OPENROUTER_API_KEY non renseignée",
+      "requetes_api": 0
+    },
+    {
+      "module": "reclamations",
+      "etat": "non_executé",
+      "erreur": "OPENROUTER_API_KEY non renseignée",
+      "requetes_api": 0
+    },
+    {
+      "module": "evenements",
+      "etat": "non_executé",
+      "erreur": "OPENROUTER_API_KEY non renseignée",
+      "requetes_api": 0
+    },
+    {
+      "module": "blog",
+      "etat": "non_executé",
+      "erreur": "OPENROUTER_API_KEY non renseignée",
+      "requetes_api": 0
+    }
+  ]
+}

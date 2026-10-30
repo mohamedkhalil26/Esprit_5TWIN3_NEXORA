@@ -33,11 +33,11 @@ class EquipementFactory extends Factory
     ];
 
     public const DESCRIPTIONS = [
-        "Équipement en parfait état de fonctionnement, livré avec ses câbles et sa housse de transport. Idéal pour le camping, les week-ends en van ou les coupures de courant.",
+        'Équipement en parfait état de fonctionnement, livré avec ses câbles et sa housse de transport. Idéal pour le camping, les week-ends en van ou les coupures de courant.',
         "Très facile à installer : il suffit de le déplier et de l'orienter vers le soleil. Je fournis une notice d'utilisation simple et je reste disponible pour toute question.",
-        "Utilisé seulement quelques fois par an, je préfère le partager plutôt que de le laisser dormir dans le garage. Compatible avec la plupart des stations électriques portables.",
+        'Utilisé seulement quelques fois par an, je préfère le partager plutôt que de le laisser dormir dans le garage. Compatible avec la plupart des stations électriques portables.',
         "Parfait pour alimenter un petit réfrigérateur, des lampes et recharger téléphones et ordinateurs lors d'un événement en plein air ou d'un marché.",
-        "Matériel fiable et silencieux, testé avant chaque location. Remise en main propre avec démonstration, possibilité de livraison dans la ville moyennant un petit supplément.",
+        'Matériel fiable et silencieux, testé avant chaque location. Remise en main propre avec démonstration, possibilité de livraison dans la ville moyennant un petit supplément.',
     ];
 
     public function definition(): array

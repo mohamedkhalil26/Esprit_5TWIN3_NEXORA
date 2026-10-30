@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ReservationRequest;
 use App\Models\Equipement;
 use App\Models\Reservation;
+use App\Services\ReservationService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -44,7 +45,7 @@ class ReservationController extends Controller
         $equipement = Equipement::findOrFail($request->validated('equipement_id'));
         $jours = Reservation::calculerJours($request->validated('date_debut'), $request->validated('date_fin'));
 
-        $reservation = Reservation::create([
+        $reservation = app(ReservationService::class)->save([
             ...$request->validated(),
             'user_id' => $request->user()->id,
             'nb_jours' => $jours,

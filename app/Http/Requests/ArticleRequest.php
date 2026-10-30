@@ -54,7 +54,7 @@ class ArticleRequest extends FormRequest
                 if ($mots < self::MOTS_MIN_PUBLICATION) {
                     $validator->errors()->add(
                         'contenu',
-                        "Un article publié doit contenir au moins ".self::MOTS_MIN_PUBLICATION." mots (actuellement {$mots}). Enregistrez-le comme brouillon en attendant."
+                        'Un article publié doit contenir au moins '.self::MOTS_MIN_PUBLICATION." mots (actuellement {$mots}). Enregistrez-le comme brouillon en attendant."
                     );
                 }
             },

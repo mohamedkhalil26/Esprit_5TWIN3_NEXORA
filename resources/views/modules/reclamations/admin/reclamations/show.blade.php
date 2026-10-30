@@ -231,4 +231,5 @@
         </div>
 
     </div>
+@include('modules.reclamations.partials.history')
 @endsection

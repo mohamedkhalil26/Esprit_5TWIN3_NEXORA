@@ -1,0 +1,63 @@
+name: Déploiement manuel SolarShare
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Environnement configuré avec approbation et secrets SSH
+        required: true
+        type: choice
+        options: [staging, production]
+        default: staging
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-${{ inputs.environment }}
+  cancel-in-progress: false
+
+jobs:
+  checks:
+    uses: ./.github/workflows/ci.yml
+  deploy:
+    needs: checks
+    environment: ${{ inputs.environment }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      SSH_HOST: ${{ secrets.SSH_HOST }}
+      SSH_USER: ${{ secrets.SSH_USER }}
+      SSH_PORT: ${{ secrets.SSH_PORT }}
+      DEPLOY_ROOT: ${{ vars.DEPLOY_ROOT }}
+      HEALTH_URL: ${{ vars.HEALTH_URL }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: solarshare-assets
+          path: public/build
+      - name: Préparer la connexion SSH vérifiée
+        env:
+          DEPLOY_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+        run: |
+          test -n "$SSH_HOST" && test -n "$SSH_USER" && test -n "$SSH_PORT"
+          test -n "$DEPLOY_KEY" && test -n "$KNOWN_HOSTS"
+          [[ "$SSH_HOST" =~ ^[a-zA-Z0-9.-]+$ ]]
+          [[ "$SSH_USER" =~ ^[a-zA-Z_][a-zA-Z0-9_-]*$ ]]
+          [[ "$SSH_PORT" =~ ^[0-9]+$ ]]
+          [[ "$DEPLOY_ROOT" =~ ^/srv/[a-zA-Z0-9_/-]+$ ]]
+          [[ "$HEALTH_URL" =~ ^https://[a-zA-Z0-9./_-]+$ ]]
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+      - name: Préparer une livraison sans secrets ni données
+        run: |
+          tar --exclude=.git --exclude=.github --exclude=.env --exclude=vendor --exclude=node_modules --exclude=storage --exclude=bootstrap/cache --exclude=public/uploads --exclude=public/storage --exclude=tests --exclude=.phpunit.result.cache -czf /tmp/solarshare-release.tar.gz .
+      - name: Transférer et déployer après sauvegarde
+        run: |
+          RELEASE_ID="${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          scp -P "$SSH_PORT" /tmp/solarshare-release.tar.gz "$SSH_USER@$SSH_HOST:/tmp/solarshare-$RELEASE_ID.tar.gz"
+          ssh -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" "bash -s -- '$DEPLOY_ROOT' '$RELEASE_ID' '$HEALTH_URL'" < scripts/deploy.sh

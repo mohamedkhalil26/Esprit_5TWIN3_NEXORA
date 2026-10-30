@@ -34,6 +34,11 @@
                             <i class="bi bi-person-circle me-1"></i>{{ auth()->user()->name }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+                            <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Mon profil et sécurité</a></li>
+                            <li><a class="dropdown-item" href="{{ route('favorites.index') }}">Mes articles favoris</a></li>
+                            <li><a class="dropdown-item" href="{{ route('tools.availability') }}">Calendrier des disponibilités</a></li>
+                            <li><a class="dropdown-item" href="{{ route('ai.show', 'equipements') }}">Assistant choix d’équipement</a></li>
+                            <li><a class="dropdown-item" href="{{ route('ai.show', 'locations') }}">Assistant de réservation</a></li>
                             @if (auth()->user()->isAdmin())
                                 <li>
                                     <a class="dropdown-item" href="{{ route('admin.dashboard') }}">

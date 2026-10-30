@@ -111,7 +111,7 @@ class EquipementController extends Controller
 
     private function enregistrerImage(UploadedFile $fichier): string
     {
-        $nom = Str::uuid().'.'.$fichier->getClientOriginalExtension();
+        $nom = Str::uuid().'.'.$fichier->extension();
         $fichier->move(public_path('uploads/equipements'), $nom);
 
         return 'uploads/equipements/'.$nom;

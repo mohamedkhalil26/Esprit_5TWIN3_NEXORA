@@ -131,7 +131,7 @@ class Evenement extends Model
 
     public function inscriptionsOuvertes(): bool
     {
-        return $this->statut === 'planifie' && ! $this->est_passe && ! $this->est_complet;
+        return $this->statut === 'planifie' && $this->date_debut->isFuture() && ! $this->est_complet;
     }
 
     /* ------------------------------------------------------------------

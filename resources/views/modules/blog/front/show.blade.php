@@ -14,6 +14,12 @@
         <div class="container px-4 px-lg-5">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
+                    @auth
+                    @php($isFavorite = auth()->user()->favoris()->where('articles.id', $article->id)->exists())
+                    <form class="mb-3" method="POST" action="{{ route($isFavorite ? 'favorites.destroy' : 'favorites.store', $article) }}">@csrf
+                    @if($isFavorite) @method('DELETE') @endif
+                    <button class="btn btn-outline-success"><i class="bi bi-bookmark"></i> {{ $isFavorite ? 'Retirer des favoris' : 'Enregistrer dans mes favoris' }}</button></form>
+                    @endauth
                     <article class="card form-card mb-5">
                         @if ($article->image)
                             <img src="{{ $article->image_url }}" class="card-img-top" style="max-height: 400px; object-fit: cover" alt="">

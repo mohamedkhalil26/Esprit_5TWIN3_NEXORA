@@ -50,7 +50,7 @@
                                 <button type="submit" class="btn btn-primary w-100 py-2">
                                     <i class="bi bi-box-arrow-in-right me-1"></i>Se connecter
                                 </button>
-                            </form>
+                            </form><p class="mt-3"><a href="{{ route('password.request') }}">Mot de passe oublié ?</a></p>
 
                             <p class="text-center small text-muted mt-4 mb-0">
                                 Pas encore de compte ? <a href="{{ route('register') }}">Inscrivez-vous</a>

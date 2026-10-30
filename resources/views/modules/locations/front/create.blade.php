@@ -28,7 +28,7 @@
                                     <div class="col-md-6">
                                         <label for="date_debut" class="form-label">Du <span class="text-danger">*</span></label>
                                         <input type="date" id="date_debut" name="date_debut" min="{{ today()->format('Y-m-d') }}"
-                                               value="{{ old('date_debut') }}"
+                                               value="{{ old('date_debut', request('date_debut')) }}"
                                                class="form-control @error('date_debut') is-invalid @enderror">
                                         @error('date_debut')
                                             <div class="invalid-feedback">{{ $message }}</div>
@@ -37,7 +37,7 @@
                                     <div class="col-md-6">
                                         <label for="date_fin" class="form-label">Au <span class="text-danger">*</span></label>
                                         <input type="date" id="date_fin" name="date_fin" min="{{ today()->format('Y-m-d') }}"
-                                               value="{{ old('date_fin') }}"
+                                               value="{{ old('date_fin', request('date_fin')) }}"
                                                class="form-control @error('date_fin') is-invalid @enderror">
                                         @error('date_fin')
                                             <div class="invalid-feedback">{{ $message }}</div>

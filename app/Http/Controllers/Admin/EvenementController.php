@@ -8,8 +8,10 @@ use App\Models\Evenement;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
 class EvenementController extends Controller
@@ -72,7 +74,13 @@ class EvenementController extends Controller
             $donnees['image'] = $this->enregistrerImage($request->file('image'));
         }
 
-        $evenement->update($donnees);
+        DB::transaction(function () use ($evenement, $donnees) {
+            $locked = Evenement::lockForUpdate()->findOrFail($evenement->id);
+            if ($donnees['capacite'] < $locked->nb_inscrits) {
+                throw ValidationException::withMessages(['capacite' => 'La capacité ne peut pas être inférieure au nombre d’inscrits.']);
+            }
+            $locked->update($donnees);
+        }, 3);
 
         return redirect()
             ->route('admin.evenements.show', $evenement)
@@ -91,7 +99,7 @@ class EvenementController extends Controller
 
     private function enregistrerImage(UploadedFile $fichier): string
     {
-        $nom = Str::uuid().'.'.$fichier->getClientOriginalExtension();
+        $nom = Str::uuid().'.'.$fichier->extension();
         $fichier->move(public_path('uploads/evenements'), $nom);
 
         return 'uploads/evenements/'.$nom;

@@ -8,7 +8,6 @@ use App\Http\Requests\ReponseReclamationRequest;
 use App\Models\Reclamation;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 /**
@@ -36,10 +35,7 @@ class ReclamationController extends Controller
         $donnees = $request->safe()->except('piece_jointe');
 
         if ($request->hasFile('piece_jointe')) {
-            $fichier = $request->file('piece_jointe');
-            $nom = Str::uuid().'.'.$fichier->getClientOriginalExtension();
-            $fichier->move(public_path('uploads/reclamations'), $nom);
-            $donnees['piece_jointe'] = 'uploads/reclamations/'.$nom;
+            $donnees['piece_jointe'] = $request->file('piece_jointe')->store('reclamations', 'local');
         }
 
         $reclamation = Reclamation::create([
