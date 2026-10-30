@@ -30,7 +30,7 @@ Les cinq réponses ont été générées par OpenRouter à travers les formulair
 - Finalisation SMTP/2FA : **13 contrôles réels supplémentaires réussis**, sans mocks email et sans mocks TOTP.
 - Emails reçus : **4 au total**, dont 2 pendant le dernier passage. Les types, sujets et identifiants des deux derniers, sans liens sensibles, sont dans `docs/resultats-smtp-2fa.json`.
 - Composer valide et aucun avis de vulnérabilité trouvé à l’audit.
-- Pint, Vite, routes, vues, actionlint et Bash vérifiés localement. La [première CI distante](https://github.com/mohamedkhalil26/Esprit_5TWIN3_NEXORA/actions/runs/41058445258) a réussi, y compris tests, audit et build.
+- Pint, Vite, routes, vues, actionlint et Bash vérifiés localement. La [CI du commit corrigé 342feda](https://github.com/mohamedkhalil26/Esprit_5TWIN3_NEXORA/actions/runs/41060201182) a réussi, y compris tests, audit, build et publication des artefacts.
 - PDF : `docs/DEVOPS_VALIDATION_FINALE.pdf`, avec couverture, sommaire, signets, numérotation et deux pages de diagrammes paysage.
 
 ## Démonstration disponible

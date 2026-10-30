@@ -113,7 +113,7 @@ def create_pdf(images):
         ['28 tests / 184 assertions', '70 contrôles HTTP réels'],
         ['4 emails fictifs dans Mailpit', '13 contrôles SMTP et 2FA réussis'],
         ['5 assistants IA testés réellement', 'Modèle OpenRouter : openrouter/free'],
-        ['GitHub Actions : première CI réussie', 'Aucun déploiement revendiqué'],
+        ['GitHub Actions : CI réelle réussie', 'Aucun déploiement revendiqué'],
     ]
     table = Table([[Paragraph(inline(x),styles['body']) for x in row] for row in status], colWidths=[(w-96)/2]*2)
     table.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,-1),colors.HexColor('#f0f5ef')),('BOX',(0,0),(-1,-1),0.6,colors.HexColor('#cad9cd')),('VALIGN',(0,0),(-1,-1),'TOP'),('LEFTPADDING',(0,0),(-1,-1),13),('RIGHTPADDING',(0,0),(-1,-1),13),('TOPPADDING',(0,0),(-1,-1),11),('BOTTOMPADDING',(0,0),(-1,-1),8)]))

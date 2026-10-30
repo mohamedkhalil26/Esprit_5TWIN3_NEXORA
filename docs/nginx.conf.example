@@ -14,6 +14,7 @@ server {
     location ~* ^/(uploads|storage)/.*\.(php|phtml|phar)$ { deny all; }
     location / { try_files $uri $uri/ /index.php?$query_string; }
     location = /index.php {
+        fastcgi_read_timeout 90s;
         include fastcgi_params;
         fastcgi_pass unix:/run/php/php8.3-fpm.sock;
         fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;

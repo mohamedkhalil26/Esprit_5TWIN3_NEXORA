@@ -28,7 +28,7 @@ Le processus DevOps vise des livraisons reproductibles, des régressions détect
 | Google2FA / BaconQrCode | TOTP, vérification anti-réutilisation et QR code SVG généré localement |
 | SSH / Nginx / PHP-FPM | Cible Linux paramétrable pour le déploiement |
 
-Le propriétaire a autorisé le push de la branche `codex/validation-finale`. Le commit initial `cfdfdab` a été poussé et la CI GitHub a terminé avec succès : [exécution 41058445258](https://github.com/mohamedkhalil26/Esprit_5TWIN3_NEXORA/actions/runs/41058445258). Les corrections de recette sont livrées sur cette même branche et font l’objet d’une nouvelle vérification CI. Aucun envoi à l’enseignant ni déploiement en production n’a été effectué.
+Le propriétaire a autorisé le push de la branche `codex/validation-finale`. Le commit corrigé `342feda` a passé la CI complète : [exécution 41060201182](https://github.com/mohamedkhalil26/Esprit_5TWIN3_NEXORA/actions/runs/41060201182). Les installations Composer/npm, l’audit, Pint, les migrations SQLite, PHPUnit, les routes, les vues, Vite et les deux publications d’artefacts ont réussi. L’exécution initiale 41058445258 était également réussie. Aucun envoi à l’enseignant ni déploiement en production n’a été effectué.
 
 ## 3. Processus DevOps
 
@@ -178,7 +178,7 @@ Arborescence attendue :
 
 Créer ces répertoires, transférer les fichiers historiques et préparer `.env` sur le serveur avant le premier CD. `backup-before-deploy` doit sauvegarder MySQL et les données partagées hors du dossier des releases, vérifier la réussite et conserver une trace horodatée. Les identifiants MySQL de sauvegarde doivent rester dans un fichier de configuration protégé, pas dans la ligne de commande ni dans GitHub Actions. Tester une restauration en staging.
 
-Configurer notamment `APP_ENV=production`, `APP_DEBUG=false`, `APP_URL=https://...`, une `APP_KEY` stable, les accès MySQL, `SESSION_SECURE_COOKIE=true`, `SESSION_HTTP_ONLY=true`, `SESSION_SAME_SITE=lax`, le transport SMTP et la clé IA. Ne jamais regénérer `APP_KEY` sur une instance existante : les secrets TOTP sont chiffrés avec cette clé. Le serveur doit maintenir son heure synchronisée pour le TOTP.
+Configurer notamment `APP_ENV=production`, `APP_DEBUG=false`, `APP_URL=https://...`, une `APP_KEY` stable, les accès MySQL, `SESSION_SECURE_COOKIE=true`, `SESSION_HTTP_ONLY=true`, `SESSION_SAME_SITE=lax`, le transport SMTP et la clé IA. Prévoir une limite d’exécution PHP supérieure au timeout IA de 60 secondes, par exemple 90 secondes, et `fastcgi_read_timeout 90s` dans Nginx. Ne jamais regénérer `APP_KEY` sur une instance existante : les secrets TOTP sont chiffrés avec cette clé. Le serveur doit maintenir son heure synchronisée pour le TOTP.
 
 Adapter `docs/nginx.conf.example`. La racine doit être `current/public`, avec interdiction d’exécuter des scripts dans les uploads. Les anciennes pièces jointes sous `public/uploads/reclamations` sont refusées en accès direct et servies via le contrôleur authentifié. Les nouveaux fichiers sont privés dans `storage/app/private/reclamations`. Apache reçoit les mêmes protections dans `public/.htaccess` ; le serveur PHP de développement ne lit pas `.htaccess` et ne remplace pas ces protections en production.
 
@@ -227,7 +227,7 @@ Pour vérifier GitHub Actions, pousser seulement après autorisation du proprié
 | SMTP local | Quatre messages fictifs dans Mailpit, dont deux reçus lors du dernier passage ; liens réellement vérifiés |
 | 2FA réelle | Activation, QR local, confirmation, challenge TOTP, récupération à usage unique et désactivation rejoués avec succès |
 | IA réelle | Cinq réponses réelles validées via les formulaires Laravel ; modèle `openrouter/free` confirmé |
-| CI GitHub | Première exécution 41058445258 réussie sur le commit cfdfdab ; corrections suivies sur la même branche |
+| CI GitHub | Exécution complète 41060201182 réussie sur le commit corrigé 342feda, avec tests, build et artefacts |
 | CD réel | Non exécuté ; cible, secrets, sauvegarde et autorisation à fournir |
 
 Avant soutenance : vérifier le scan physique du QR code avec une application TOTP, les écritures concurrentes MySQL et le CD en staging. Les cinq assistants réels, la réception SMTP locale, les téléchargements privés et les deux formats navigateur ont été contrôlés. Le modèle gratuit peut rester soumis à des quotas et sa disponibilité n’est pas garantie pour une présentation ultérieure. Mailpit doit rester démarré. Ne pas utiliser les mots de passe de démonstration sur un hébergement public.
