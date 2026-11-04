@@ -1,0 +1,77 @@
+{
+    "created_at_utc": "2026-11-03T20:58:12+00:00",
+    "requested_model": "openrouter/free",
+    "real_api_calls": true,
+    "synthetic_contexts_only": true,
+    "database_driver": "sqlite",
+    "database_name": ":memory:",
+    "secret_values_included": false,
+    "tests": {
+        "equipements": {
+            "passed": true,
+            "http_status": 200,
+            "validated_by_laravel": true,
+            "elapsed_ms": 2272,
+            "api_attempts": 0,
+            "retries": 0,
+            "result": {
+                "equipement_ids": [
+                    91001,
+                    91002
+                ]
+            }
+        },
+        "locations": {
+            "passed": true,
+            "http_status": 200,
+            "validated_by_laravel": true,
+            "elapsed_ms": 18366,
+            "api_attempts": 0,
+            "retries": 0,
+            "result": {
+                "equipement_ids": [
+                    92001
+                ]
+            }
+        },
+        "reclamations": {
+            "passed": false,
+            "elapsed_ms": 45349,
+            "api_attempts": 0,
+            "retries": 0,
+            "error": "Échec de connexion ou réponse refusée/invalide; détails sensibles omis.",
+            "error_type": "RuntimeException"
+        },
+        "evenements": {
+            "passed": false,
+            "elapsed_ms": 728,
+            "api_attempts": 0,
+            "retries": 0,
+            "error": "Échec de connexion ou réponse refusée/invalide; détails sensibles omis.",
+            "error_type": "RuntimeException"
+        },
+        "blog": {
+            "passed": true,
+            "http_status": 200,
+            "validated_by_laravel": true,
+            "elapsed_ms": 14152,
+            "api_attempts": 0,
+            "retries": 0,
+            "result": {
+                "titre": "Gestes simples pour économiser l'énergie",
+                "resume": "Des conseils pratiques pour diminuer votre consommation à domicile.",
+                "mots_cles": [
+                    "économies",
+                    "gestes",
+                    "conseils",
+                    "domicile"
+                ],
+                "ameliorations": [
+                    "Décrire l'importance de désolidariser les prises secteur pour éviter le gaspillage continu.",
+                    "Suggérer de regarder ses propres habitudes de consommation en identifiant les postes qui grignotent inutilement.",
+                    "Introduire d'autres gestes simples comme profiter de la lumière naturelle pendant le jour ou fermer fenêtres mal ventilées."
+                ]
+            }
+        }
+    }
+}

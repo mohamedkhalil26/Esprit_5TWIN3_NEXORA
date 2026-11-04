@@ -7,10 +7,10 @@ use App\AI\Core\AIOutputValidator;
 use App\AI\Core\AIRequest;
 use App\Exceptions\OpenRouterException;
 use Illuminate\Http\Client\ConnectionException;
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Http\Client\Response;
 use JsonException;
 use RuntimeException;
 use Throwable;
@@ -108,6 +108,7 @@ class OpenRouterService
 
                 if (isset($models[$index + 1])) {
                     $diagnostic['type'] = 'temporary_provider_error';
+
                     continue;
                 }
 
@@ -139,6 +140,7 @@ class OpenRouterService
 
                 if (isset($models[$index + 1]) && in_array($status, [502, 503, 504], true)) {
                     $diagnostic['type'] = 'temporary_provider_error';
+
                     continue;
                 }
 

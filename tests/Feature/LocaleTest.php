@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
 use Tests\TestCase;
 
 class LocaleTest extends TestCase
@@ -77,7 +78,7 @@ class LocaleTest extends TestCase
                 ->assertOk()->assertSee('lang="'.$locale.'" dir="'.$direction.'"', false)
                 ->assertSee($solarTitle)->assertSee('Smart Booking Optimizer')
                 ->assertSee($doctorTitle)->assertSee($eventTitle)->assertSee($blogTitle);
-            $hubContent = \Illuminate\Support\Str::between($response->getContent(), '<section class="ai-hub-page', '</section>');
+            $hubContent = Str::between($response->getContent(), '<section class="ai-hub-page', '</section>');
             $this->assertStringNotContainsString('Front Office', $hubContent);
             $this->assertStringNotContainsString('Back Office', $hubContent);
             $this->assertStringNotContainsString('Equipment Demand Radar', $hubContent);

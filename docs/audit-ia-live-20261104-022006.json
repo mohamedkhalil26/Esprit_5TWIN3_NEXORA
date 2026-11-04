@@ -1,0 +1,148 @@
+{
+    "created_at_utc": "2026-11-04T02:20:06+00:00",
+    "requested_model": "openrouter/free",
+    "real_api_calls": true,
+    "synthetic_contexts_only": true,
+    "database_accessed": false,
+    "secret_values_included": false,
+    "tests": {
+        "equipements": {
+            "status": "PASS",
+            "passed": true,
+            "http_status": 200,
+            "requested_model": "openrouter/free",
+            "response_model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+            "validated_by_laravel": true,
+            "elapsed_ms": 6894,
+            "api_attempts": 1,
+            "retries": 0,
+            "responses": [
+                {
+                    "http_status": 200,
+                    "response_model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+                    "finish_reason": "stop"
+                }
+            ],
+            "result": {
+                "equipement_ids": [
+                    91001,
+                    91002,
+                    91003
+                ]
+            }
+        },
+        "locations": {
+            "status": "FAIL",
+            "passed": false,
+            "http_status": 200,
+            "requested_model": "openrouter/free",
+            "response_model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+            "elapsed_ms": 26129,
+            "api_attempts": 1,
+            "retries": 0,
+            "responses": [
+                {
+                    "http_status": 200,
+                    "response_model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+                    "finish_reason": "stop"
+                }
+            ],
+            "error": "Échec de connexion ou réponse refusée/invalide; détails sensibles omis.",
+            "retry_after_seconds": null,
+            "error_type": "RuntimeException"
+        },
+        "reclamations": {
+            "status": "PASS",
+            "passed": true,
+            "http_status": 200,
+            "requested_model": "openrouter/free",
+            "response_model": "nvidia/nemotron-3.5-super-vl:free",
+            "validated_by_laravel": true,
+            "elapsed_ms": 6697,
+            "api_attempts": 1,
+            "retries": 0,
+            "responses": [
+                {
+                    "http_status": 200,
+                    "response_model": "nvidia/nemotron-3.5-super-vl:free",
+                    "finish_reason": "stop"
+                }
+            ],
+            "result": {
+                "categorie": "equipement",
+                "priorite": "haute",
+                "resume": "Un chargeur solaire surchauffe et ne recharge plus correctement la batterie.",
+                "reponse": "Nous sommes désolés d’apprendre que votre chargeur solaire chauffe et ne fonctionne plus correctement. Votre sécurité est importante : n’utilisez plus l’appareil. Nous prenons votre signalement au sérieux et vous informerons des prochaines étapes sous peu."
+            }
+        },
+        "evenements": {
+            "status": "PASS",
+            "passed": true,
+            "http_status": 200,
+            "requested_model": "openrouter/free",
+            "response_model": "nvidia/nemotron-3.5-lightning:free",
+            "validated_by_laravel": true,
+            "elapsed_ms": 23264,
+            "api_attempts": 1,
+            "retries": 0,
+            "responses": [
+                {
+                    "http_status": 200,
+                    "response_model": "nvidia/nemotron-3.5-lightning:free",
+                    "finish_reason": "stop"
+                }
+            ],
+            "result": {
+                "description": "Atelier pratique d’initiation aux principes de l’énergie solaire, conçu pour les débutants souhaitant comprendre le fonctionnement de base et les applications courantes sans équipement spécifique ni emplacement défini.",
+                "programme": [
+                    "Accueil et présentation",
+                    "Principes fondamentaux du solaire",
+                    "Exercice pratique de calcul",
+                    "Échange et questions"
+                ]
+            }
+        },
+        "blog": {
+            "status": "PASS",
+            "passed": true,
+            "http_status": 200,
+            "requested_model": "openrouter/free",
+            "response_model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+            "validated_by_laravel": true,
+            "elapsed_ms": 11236,
+            "api_attempts": 1,
+            "retries": 0,
+            "responses": [
+                {
+                    "http_status": 200,
+                    "response_model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+                    "finish_reason": "stop"
+                }
+            ],
+            "result": {
+                "titre": "Conseils pratiques pour réduire sa consommation d’énergie à la maison",
+                "resume": "Ce brouillon regroupe des gestes simples et accessibles pour diminuer la consommation énergétique au quotidien, sans recourir à des équipements coûteux ni à des données chiffrées.",
+                "mots_cles": [
+                    "économie d’énergie",
+                    "gestes quotidiens",
+                    "consommation domestique",
+                    "éco‑habitudes",
+                    "réduction du gaspillage"
+                ],
+                "ameliorations": [
+                    "Organiser les conseils par pièce (cuisine, salon, chambre, salle de bain) pour faciliter la lecture.",
+                    "Ajouter des exemples concrets de gestes (ex. : couvrir les casseroles, régler le thermostat, débrancher les chargeurs).",
+                    "Insérer des rappels de maintenance régulière (nettoyage des filtres, vérification de l’étanchéité).",
+                    "Prévoir une checklist récapitulative à imprimer ou à afficher.",
+                    "Proposer des alternatives selon le type de logement (appartement, maison, location).",
+                    "Utiliser un ton encouragent et progressif pour motiver l’adoption progressive des gestes."
+                ]
+            }
+        }
+    },
+    "bootstrap_status": "passed",
+    "database_driver": "sqlite",
+    "database_name": ":memory:",
+    "completed_at_utc": "2026-11-04T02:21:20+00:00",
+    "campaign_status": "FAIL"
+}

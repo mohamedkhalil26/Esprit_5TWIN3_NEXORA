@@ -1,0 +1,75 @@
+{
+    "created_at_utc": "2026-11-03T21:38:13+00:00",
+    "requested_model": "openrouter/free",
+    "real_api_calls": true,
+    "synthetic_contexts_only": true,
+    "database_accessed": false,
+    "secret_values_included": false,
+    "tests": {
+        "equipements": {
+            "status": "FAIL",
+            "passed": false,
+            "http_status": null,
+            "requested_model": "openrouter/free",
+            "response_model": null,
+            "elapsed_ms": 93,
+            "api_attempts": 0,
+            "retries": 0,
+            "error": "Échec de connexion ou réponse refusée/invalide; détails sensibles omis.",
+            "error_type": "RuntimeException"
+        },
+        "locations": {
+            "status": "FAIL",
+            "passed": false,
+            "http_status": null,
+            "requested_model": "openrouter/free",
+            "response_model": null,
+            "elapsed_ms": 2,
+            "api_attempts": 0,
+            "retries": 0,
+            "error": "Échec de connexion ou réponse refusée/invalide; détails sensibles omis.",
+            "error_type": "RuntimeException"
+        },
+        "reclamations": {
+            "status": "FAIL",
+            "passed": false,
+            "http_status": null,
+            "requested_model": "openrouter/free",
+            "response_model": null,
+            "elapsed_ms": 1,
+            "api_attempts": 0,
+            "retries": 0,
+            "error": "Échec de connexion ou réponse refusée/invalide; détails sensibles omis.",
+            "error_type": "RuntimeException"
+        },
+        "evenements": {
+            "status": "FAIL",
+            "passed": false,
+            "http_status": null,
+            "requested_model": "openrouter/free",
+            "response_model": null,
+            "elapsed_ms": 2,
+            "api_attempts": 0,
+            "retries": 0,
+            "error": "Échec de connexion ou réponse refusée/invalide; détails sensibles omis.",
+            "error_type": "RuntimeException"
+        },
+        "blog": {
+            "status": "FAIL",
+            "passed": false,
+            "http_status": null,
+            "requested_model": "openrouter/free",
+            "response_model": null,
+            "elapsed_ms": 1,
+            "api_attempts": 0,
+            "retries": 0,
+            "error": "Échec de connexion ou réponse refusée/invalide; détails sensibles omis.",
+            "error_type": "RuntimeException"
+        }
+    },
+    "bootstrap_status": "passed",
+    "database_driver": "sqlite",
+    "database_name": ":memory:",
+    "completed_at_utc": "2026-11-03T21:38:13+00:00",
+    "campaign_status": "FAIL"
+}

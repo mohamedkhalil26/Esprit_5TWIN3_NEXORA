@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\OpenRouterException;
 use App\Models\AiConversation;
 use App\Models\AiFeedback;
 use App\Models\AiMessage;
@@ -11,7 +12,6 @@ use App\Models\Evenement;
 use App\Models\Reclamation;
 use App\Models\Reservation;
 use App\Models\User;
-use App\Exceptions\OpenRouterException;
 use App\Services\Ai\AiContextBuilder;
 use App\Services\Ai\AiConversationService;
 use Illuminate\Http\Request;

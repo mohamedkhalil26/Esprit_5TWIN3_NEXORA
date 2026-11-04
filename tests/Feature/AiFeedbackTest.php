@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Models\AiFeatureRun;
 use App\Models\AiConversation;
+use App\Models\AiFeatureRun;
 use App\Models\AiFeedback;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;

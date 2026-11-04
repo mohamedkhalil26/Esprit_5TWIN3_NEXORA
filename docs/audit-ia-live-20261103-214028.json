@@ -1,0 +1,109 @@
+{
+  "created_at_utc": "2026-11-03T21:40:28+00:00",
+  "requested_model": "openrouter/free",
+  "real_api_calls": true,
+  "synthetic_contexts_only": true,
+  "database_accessed": false,
+  "secret_values_included": false,
+  "tests": {
+    "equipements": {
+      "status": "PASS",
+      "passed": true,
+      "http_status": 200,
+      "requested_model": "openrouter/free",
+      "response_model": "xingchen-agi/xing4.0-29b-a4b:free",
+      "validated_by_laravel": true,
+      "elapsed_ms": 26498,
+      "api_attempts": 1,
+      "retries": 0,
+      "result": {
+        "equipement_ids": [
+          91001,
+          91002,
+          91003
+        ]
+      },
+      "json_validated": true,
+      "schema_validated": true,
+      "coherence_review": "Trois identifiants synthetiques valides; cout cumule estime a 170 DT pour un jour, sous le budget de 500 DT."
+    },
+    "locations": {
+      "status": "FAIL",
+      "passed": false,
+      "http_status": 429,
+      "requested_model": "openrouter/free",
+      "response_model": null,
+      "elapsed_ms": 43799,
+      "api_attempts": 2,
+      "retries": 1,
+      "error": "Le service IA est temporairement limité. Attendez quelques minutes avant de réessayer.",
+      "error_type": "App\\Exceptions\\OpenRouterException",
+      "retry_after_seconds": null,
+      "json_validated": false,
+      "schema_validated": false,
+      "validated_by_laravel": false
+    },
+    "reclamations": {
+      "status": "FAIL",
+      "passed": false,
+      "http_status": 429,
+      "requested_model": "openrouter/free",
+      "response_model": null,
+      "elapsed_ms": 671,
+      "api_attempts": 1,
+      "retries": 0,
+      "error": "Le service IA est temporairement limité. Attendez quelques minutes avant de réessayer.",
+      "error_type": "App\\Exceptions\\OpenRouterException",
+      "retry_after_seconds": null,
+      "json_validated": false,
+      "schema_validated": false,
+      "validated_by_laravel": false
+    },
+    "evenements": {
+      "status": "FAIL",
+      "passed": false,
+      "http_status": 200,
+      "requested_model": "openrouter/free",
+      "response_model": "xingchen-agi/xing4.0-29b-a4b:free",
+      "validated_by_laravel": true,
+      "elapsed_ms": 30912,
+      "api_attempts": 1,
+      "retries": 0,
+      "result": {
+        "description": "Cet atelier fictif pour débutants présente les bases de l’énergie solaire dans un cadre théorique et contrôlé. Il vise à tester les acquis conceptuels de la plateforme sans jamais produire de résultats réels ou fiables. Une initiation complète aux principes clés de l'energie renouvable est proposée ici.",
+        "programme": [
+          "Accueil des participants à l'événement fictif",
+          "Présentation du cadre théorique de l'énergie solaire",
+          "Exposé introductif sur les impacts et les mécanismes de base",
+          "Exercice de conceptualisation fictive des systèmes photovoltaïques",
+          "Démonstration interactive théorisée par la plateforme"
+        ]
+      },
+      "json_validated": true,
+      "schema_validated": true,
+      "quality_review": "Structure valide et contenu lie au programme, mais formulations meta peu pretes pour les participants; revision humaine necessaire."
+      ,"error": "Échec de la revue éditoriale : la réponse contient des formulations méta inadaptées à une annonce destinée aux participants. Le schéma JSON était valide."
+    },
+    "blog": {
+      "status": "FAIL",
+      "passed": false,
+      "http_status": 429,
+      "requested_model": "openrouter/free",
+      "response_model": null,
+      "elapsed_ms": 2334,
+      "api_attempts": 1,
+      "retries": 0,
+      "error": "Le service IA est temporairement limité. Attendez quelques minutes avant de réessayer.",
+      "error_type": "App\\Exceptions\\OpenRouterException",
+      "retry_after_seconds": null,
+      "json_validated": false,
+      "schema_validated": false,
+      "validated_by_laravel": false
+    }
+  },
+  "bootstrap_status": "passed",
+  "database_driver": "sqlite",
+  "database_name": ":memory:",
+  "completed_at_utc": "2026-11-03T21:42:12+00:00",
+  "campaign_status": "FAIL"
+}

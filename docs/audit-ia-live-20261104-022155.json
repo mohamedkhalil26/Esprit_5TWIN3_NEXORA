@@ -1,0 +1,150 @@
+{
+    "created_at_utc": "2026-11-04T02:21:55+00:00",
+    "requested_model": "openrouter/free",
+    "real_api_calls": true,
+    "synthetic_contexts_only": true,
+    "database_accessed": false,
+    "secret_values_included": false,
+    "tests": {
+        "equipements": {
+            "status": "PASS",
+            "passed": true,
+            "http_status": 200,
+            "requested_model": "openrouter/free",
+            "response_model": "liquid/lfm-2.5-2.6b:free",
+            "validated_by_laravel": true,
+            "elapsed_ms": 2264,
+            "api_attempts": 1,
+            "retries": 0,
+            "responses": [
+                {
+                    "http_status": 200,
+                    "response_model": "liquid/lfm-2.5-2.6b:free",
+                    "finish_reason": "stop"
+                }
+            ],
+            "result": {
+                "equipement_ids": [
+                    91001,
+                    91002,
+                    91003
+                ]
+            }
+        },
+        "locations": {
+            "status": "PASS",
+            "passed": true,
+            "http_status": 200,
+            "requested_model": "openrouter/free",
+            "response_model": "nvidia/nemotron-3.5-lightning:free",
+            "validated_by_laravel": true,
+            "elapsed_ms": 17634,
+            "api_attempts": 1,
+            "retries": 0,
+            "responses": [
+                {
+                    "http_status": 200,
+                    "response_model": "nvidia/nemotron-3.5-lightning:free",
+                    "finish_reason": "stop"
+                }
+            ],
+            "result": {
+                "equipement_ids": [
+                    92001,
+                    92002
+                ]
+            }
+        },
+        "reclamations": {
+            "status": "PASS",
+            "passed": true,
+            "http_status": 200,
+            "requested_model": "openrouter/free",
+            "response_model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+            "validated_by_laravel": true,
+            "elapsed_ms": 8318,
+            "api_attempts": 1,
+            "retries": 0,
+            "responses": [
+                {
+                    "http_status": 200,
+                    "response_model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+                    "finish_reason": "stop"
+                }
+            ],
+            "result": {
+                "categorie": "equipement",
+                "priorite": "haute",
+                "resume": "Chargeur solaire surchauffe et ne charge plus la batterie.",
+                "reponse": "Nous sommes désolés pour ce désagrément. Votre signalement est pris en compte et transmis à l’équipe technique pour analyse. Nous vous tiendrons informé rapidement."
+            }
+        },
+        "evenements": {
+            "status": "PASS",
+            "passed": true,
+            "http_status": 200,
+            "requested_model": "openrouter/free",
+            "response_model": "nvidia/nemotron-3.5-lightning:free",
+            "validated_by_laravel": true,
+            "elapsed_ms": 26193,
+            "api_attempts": 1,
+            "retries": 0,
+            "responses": [
+                {
+                    "http_status": 200,
+                    "response_model": "nvidia/nemotron-3.5-lightning:free",
+                    "finish_reason": "stop"
+                }
+            ],
+            "result": {
+                "description": "Atelier pratique d’initiation à l’énergie solaire pour un public débutant. Découverte des concepts clés du photovoltaïque, du fonctionnement des panneaux solaires et des principes de base pour une utilisation responsable.",
+                "programme": [
+                    "Accueil",
+                    "Concepts du photovoltaïque",
+                    "Fonctionnement des panneaux",
+                    "Bases d’utilisation",
+                    "Échange"
+                ]
+            }
+        },
+        "blog": {
+            "status": "PASS",
+            "passed": true,
+            "http_status": 200,
+            "requested_model": "openrouter/free",
+            "response_model": "nvidia/nemotron-3.5-lightning:free",
+            "validated_by_laravel": true,
+            "elapsed_ms": 10661,
+            "api_attempts": 1,
+            "retries": 0,
+            "responses": [
+                {
+                    "http_status": 200,
+                    "response_model": "nvidia/nemotron-3.5-lightning:free",
+                    "finish_reason": "stop"
+                }
+            ],
+            "result": {
+                "titre": "Gestes quotidiens pour réduire sa consommation d'énergie",
+                "resume": "Conseils simples et naturels pour adapter ses habitudes à la maison, sans chiffres ni revendications précises.",
+                "mots_cles": [
+                    "énergie",
+                    "habitudes",
+                    "maison",
+                    "confort"
+                ],
+                "ameliorations": [
+                    "Éteindre les lumières en quittant une pièce",
+                    "Profiter de la lumière naturelle en ouvrant les rideaux",
+                    "Débrancher les appareils en veille",
+                    "Aérer les pièces pour renouveler l'air"
+                ]
+            }
+        }
+    },
+    "bootstrap_status": "passed",
+    "database_driver": "sqlite",
+    "database_name": ":memory:",
+    "completed_at_utc": "2026-11-04T02:23:01+00:00",
+    "campaign_status": "PASS"
+}
