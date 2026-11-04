@@ -189,13 +189,21 @@ class AiConversationController extends Controller
         }
 
         if ($exception instanceof OpenRouterException) {
+            if ($exception->isTimeout()) {
+                return 'provider_timeout';
+            }
+
+            if ($exception->isConfigurationError()) {
+                return 'invalid_configuration';
+            }
+
             return match ($exception->httpStatus) {
                 429 => 'rate_limited',
                 401 => 'invalid_configuration',
                 402 => 'credits_exhausted',
                 403 => 'model_forbidden',
                 400 => 'request_rejected',
-                default => 'provider_unavailable',
+                default => $exception->errorType === 'invalid_output' ? 'generation_failed' : 'provider_unavailable',
             };
         }
 

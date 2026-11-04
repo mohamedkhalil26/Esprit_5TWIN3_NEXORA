@@ -71,8 +71,8 @@ class AiConversationService
             $result = $this->addRecommendationDetails($module, $result, $context);
         } catch (\Throwable $exception) {
             $run->update([
-                'status' => $exception instanceof OpenRouterException && $exception->httpStatus === 429 ? 'rate_limited' : ($exception instanceof ConnectionException ? 'timeout' : 'provider_error'),
-                'error_code' => $exception instanceof OpenRouterException ? 'http_'.$exception->httpStatus : 'provider_unavailable',
+                'status' => $exception instanceof OpenRouterException ? $exception->runStatus() : ($exception instanceof ConnectionException ? 'timeout' : 'provider_error'),
+                'error_code' => $exception instanceof OpenRouterException ? $exception->runErrorCode() : 'provider_unavailable',
                 'duration_ms' => (int) round((microtime(true) - $started) * 1000),
             ]);
             throw $exception;
