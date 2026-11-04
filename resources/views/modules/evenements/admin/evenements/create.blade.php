@@ -8,6 +8,9 @@
 @endsection
 
 @section('content')
+    @if(request()->query('blueprint'))
+        <div class="alert alert-info">{{ __('The event form is prefilled from a draft. Review suggested details, choose valid dates and confirm by saving.') }}</div>
+    @endif
     <form method="POST" action="{{ route('admin.evenements.store') }}" enctype="multipart/form-data" novalidate>
         @csrf
         <x-admin.card title="Informations de l'événement" icon="calendar-event">

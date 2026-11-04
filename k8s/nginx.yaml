@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels: { app: nexora-nginx }
+  template:
+    metadata:
+      labels: { app: nexora-nginx }
+    spec:
+      containers:
+        - name: nginx
+          image: nexora-nginx:local
+          imagePullPolicy: IfNotPresent
+          ports:
+            - { name: http, containerPort: 80 }
+          volumeMounts:
+            - { name: app-storage, mountPath: /var/www/html/storage, readOnly: true }
+            - { name: app-uploads, mountPath: /var/www/html/public/uploads, readOnly: true }
+          readinessProbe:
+            httpGet: { path: /up, port: http }
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet: { path: /up, port: http }
+            initialDelaySeconds: 25
+            periodSeconds: 20
+      volumes:
+        - { name: app-storage, persistentVolumeClaim: { claimName: app-storage } }
+        - { name: app-uploads, persistentVolumeClaim: { claimName: app-uploads } }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+spec:
+  type: NodePort
+  selector: { app: nexora-nginx }
+  ports:
+    - { name: http, port: 80, targetPort: http, nodePort: 30088 }

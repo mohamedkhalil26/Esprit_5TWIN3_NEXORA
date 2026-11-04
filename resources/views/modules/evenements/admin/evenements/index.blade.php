@@ -9,6 +9,8 @@
 @section('content')
     <x-admin.card title="Liste des événements" icon="calendar-event" body-class="p-0">
         <x-slot:tools>
+            <a href="{{ route('ai.admin.show', 'evenements') }}" class="btn btn-outline-primary btn-sm me-1"><i class="bi bi-stars me-1"></i>Analyser les événements</a>
+            <a href="{{ route('ai.show', 'evenements') }}" class="btn btn-outline-secondary btn-sm me-1"><i class="bi bi-magic me-1"></i>Générer une proposition</a>
             <a href="{{ route('admin.evenements.create') }}" class="btn btn-primary btn-sm">
                 <i class="bi bi-plus-lg me-1"></i>Nouvel événement
             </a>

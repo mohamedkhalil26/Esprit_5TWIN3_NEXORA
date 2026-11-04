@@ -17,6 +17,17 @@
 
 body {
     background-color: #fff;
+    color: #20332a;
+    font-family: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6,
+.navbar,
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
 }
 
 a {
@@ -107,7 +118,7 @@ hr.divider {
     color: var(--ss-green) !important;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
     #mainNav .navbar-nav .nav-item .nav-link:hover,
     #mainNav .navbar-nav .nav-item .nav-link.active {
         color: var(--ss-sun) !important;
@@ -123,8 +134,27 @@ hr.divider {
     }
 }
 
+#mainNav .navbar-toggler:focus-visible,
+#mainNav a:focus-visible,
+#mainNav button:focus-visible {
+    outline: 3px solid var(--ss-sun);
+    outline-offset: 3px;
+    box-shadow: none;
+}
+
+@media (max-width: 1199.98px) {
+    #mainNav .navbar-collapse {
+        max-height: calc(100vh - 5rem);
+        overflow-y: auto;
+        padding: .75rem 0 1rem;
+    }
+    #mainNav .navbar-nav { align-items: stretch !important; }
+    #mainNav .navbar-nav .nav-link { padding-inline: .75rem; }
+    #mainNav .dropdown-menu { border: 0; box-shadow: none; }
+    #mainNav .btn-nav { display: inline-flex; margin: .35rem .75rem; }
+}
+
 #mainNav .dropdown-menu {
-    font-family: "Merriweather Sans", sans-serif;
     font-size: .9rem;
 }
 
@@ -216,6 +246,31 @@ header.masthead h1 span {
     box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .08);
 }
 
+.ai-home-card {
+    border: 1px solid #e4ebe5;
+    border-radius: 1rem;
+    box-shadow: 0 .25rem 1rem rgba(18, 48, 31, .055);
+    transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+.ai-home-card:hover,
+.ai-home-card:focus-within {
+    border-color: rgba(var(--ss-green-rgb), .45);
+    box-shadow: 0 .75rem 1.5rem rgba(18, 48, 31, .1);
+    transform: translateY(-2px);
+}
+
+.ai-home-icon {
+    align-items: center;
+    background: #e7f2e9;
+    color: var(--ss-green-dark);
+    display: inline-flex;
+    flex: 0 0 2.5rem;
+    height: 2.5rem;
+    justify-content: center;
+    width: 2.5rem;
+}
+
 .step-icon {
     width: 4.5rem;
     height: 4.5rem;
@@ -256,6 +311,12 @@ header.masthead h1 span {
     color: #fff;
     text-transform: uppercase;
     letter-spacing: .05em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ai-home-card {
+        transition: none;
+    }
 }
 
 .pagination {

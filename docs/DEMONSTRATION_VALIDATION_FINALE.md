@@ -1,8 +1,8 @@
 # SolarShare — Démonstration de validation finale
 
-> **État final :** OpenRouter est maintenant configuré et les cinq assistants ont retourné une réponse réelle valide sur les contenus fictifs. La première CI GitHub a réussi après push autorisé. Mailpit contient quatre messages de recette et la suite compte 28 tests / 184 assertions. Les paragraphes historiques plus bas décrivant l’absence de clé ou l’absence de push ne sont plus l’état courant ; consulter `docs/FINALISATION_AUTOMATIQUE.md`.
+> **État au 3 novembre 2026 :** les résultats précédents ci-dessous sont historiques. La validation locale récente compte 37 tests / 224 assertions, dont 13 / 65 pour les assistants IA. Lors de la campagne live de clôture, les cinq appels synthétiques ont reçu HTTP 429 : aucune réponse IA ne peut être démontrée par cette campagne. Voir `rapport-final-nexora.md` et `audit-ia-live-20261103-210136.json` avant de présenter les résultats.
 
-> **Mise à jour de finalisation :** Mailpit 1.32.0 a été installé et démarré localement ; `.env` utilise maintenant SMTP sur `127.0.0.1:1025`. Deux notifications et leurs liens ont été vérifiés, ainsi que le parcours 2FA complet. Le serveur de recette accepte `SOLARSHARE_RECETTE_SMTP=1` pour utiliser ce transport. Les explications historiques du transport `log` plus bas décrivent la première recette ; l’état final et les relances sont dans `docs/FINALISATION_AUTOMATIQUE.md`. La clé OpenRouter reste à renseigner localement.
+> **État des services à revalider avant la soutenance :** les preuves Mailpit et 2FA mentionnées plus bas correspondent à une recette antérieure. Cette clôture n'a pas renvoyé de nouveaux emails et n'a pas revalidé la réception SMTP; la configuration Gmail est documentée dans `CONFIGURATION_EMAIL_GMAIL.md`. N'affichez pas les affirmations historiques comme des tests exécutés le 3 novembre.
 
 **Préparation : 30 octobre 2026 — Africa/Tunis**
 **Présentation visée : semaine du 2 novembre 2026**

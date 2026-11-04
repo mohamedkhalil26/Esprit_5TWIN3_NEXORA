@@ -2,6 +2,8 @@
 
 > **Actualisation du 30 octobre 2026 :** 28 tests / 184 assertions réussis, 70 contrôles HTTP et 13 contrôles supplémentaires SMTP/2FA réussis. Les cinq assistants ont produit une réponse OpenRouter réelle validée par Laravel. Mailpit contient quatre messages fictifs issus de deux passages ; les liens de vérification et de réinitialisation ont fonctionné. La branche de validation a été poussée après autorisation et la première CI GitHub est réussie. Aucun déploiement n’a été effectué.
 
+> **État de clôture au 3 novembre 2026 :** les chiffres ci-dessus sont un relevé historique. La suite locale la plus récente compte 37 tests / 224 assertions (dont 13 / 65 IA), et le build Vite ainsi que les caches routes/vues ont été vérifiés. La nouvelle campagne OpenRouter synthétique a reçu HTTP 429 pour chacun des cinq assistants; aucune réponse n'a pu être validée lors de cette campagne. Aucun nouveau push ou déploiement n'a été fait. Voir `rapport-final-nexora.md` et `audit-ia-live-20261103-210136.json` pour les preuves et limites du présent état.
+
 **Module :** Applications Web Avancées — ESPRIT
 **Échéance :** semaine du 2 novembre 2026
 **État de préparation :** 30 octobre 2026, fuseau Africa/Tunis

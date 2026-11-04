@@ -13,6 +13,10 @@ abstract class TestCase extends BaseTestCase
             throw new \RuntimeException('Les tests exigent exclusivement SQLite en mémoire.');
         }
 
+        config([
+            'ai.fallback_model' => 'google/gemma-4-26b-a4b-it:free',
+        ]);
+
         return $app;
     }
 }

@@ -1,0 +1,36 @@
+<?php
+
+return [
+    'title' => 'AI Centre',
+    'nav_label' => 'AI Centre',
+    'nav_menu' => 'Smart tools',
+    'nav_description' => 'Tools for solar energy',
+    'hero_title' => 'Intelligence for your solar journey',
+    'home_title' => 'Simpler solar choices at every step',
+    'home_subtitle' => 'Explore SolarShare tools to choose, book, learn and share.',
+    'subtitle' => 'Helpful tools to find the right equipment, plan your projects and make more of solar energy.',
+    'eyebrow' => 'SolarShare · Smart tools',
+    'section_eyebrow' => 'Explore SolarShare',
+    'section_title' => 'A helping hand for every project',
+    'section_note' => 'Choose a tool and get started in moments.',
+    'explore_modules' => 'Explore the tools',
+    'open_feature' => 'Explore',
+    'sign_in_to_start' => 'Sign in to get started',
+    'sign_in_hint' => 'Some tools are available to SolarShare members.',
+    'sign_in' => 'Sign in',
+    'privacy' => 'Availability and bookings are checked by SolarShare. Review suggestions before taking action.',
+    'card_labels' => [
+        'equipements' => 'Solar equipment',
+        'locations' => 'Booking',
+        'reclamations' => 'Help and support',
+        'evenements' => 'Events',
+        'blog' => 'Articles and tips',
+    ],
+    'modules' => [
+        'equipements' => ['front_title' => 'SolarMatch', 'front_description' => 'Find solar equipment that fits your budget, location and needs.', 'back_title' => 'Equipment Demand Radar'],
+        'locations' => ['front_title' => 'Smart Booking Optimizer', 'front_description' => 'Compare equipment available for your dates and budget before booking.', 'back_title' => 'Booking Insights'],
+        'reclamations' => ['front_title' => 'Complaint Doctor', 'front_description' => 'Clarify your request and review suggestions before sending it.', 'back_title' => 'Complaint Intelligence Center'],
+        'evenements' => ['front_title' => 'Event Matchmaker', 'front_description' => 'Find solar events that fit your interests and area.', 'back_title' => 'Event Blueprint Generator'],
+        'blog' => ['front_title' => 'Blog Assistant', 'front_description' => 'Explore published articles and get answers grounded in their content.', 'back_title' => 'SEO & Editorial Copilot'],
+    ],
+];

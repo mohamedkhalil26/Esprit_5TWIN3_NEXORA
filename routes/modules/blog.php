@@ -8,6 +8,7 @@
 
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CommentaireController;
+use App\Http\Controllers\ArticleQuizController;
 use App\Http\Controllers\Front\BlogController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,3 +26,9 @@ Route::get('/blog/{article:slug}', [BlogController::class, 'show'])->name('front
 Route::post('/blog/{article:slug}/commentaires', [BlogController::class, 'commenter'])
     ->middleware(['auth', 'verified'])
     ->name('front.blog.commenter');
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/blog/{article:slug}/quiz', [ArticleQuizController::class, 'show'])->name('ai.quiz.show');
+    Route::post('/blog/{article:slug}/quiz', [ArticleQuizController::class, 'generate'])->middleware('throttle:ai')->name('ai.quiz.generate');
+    Route::post('/quiz/{quiz}/submit', [ArticleQuizController::class, 'submit'])->name('ai.quiz.submit');
+});

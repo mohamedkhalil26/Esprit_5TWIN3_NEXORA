@@ -1,5 +1,7 @@
 # SolarShare - Finalisation automatique du 30 octobre 2026
 
+> **Instantané historique.** Les tâches et appels externes ci-dessous décrivent les résultats consignés le 30 octobre, pas une nouvelle vérification du 3 novembre. La campagne IA de clôture a reçu cinq HTTP 429; la réception SMTP et les services externes n'ont pas été revalidés dans cette clôture. Lire `rapport-final-nexora.md` et `audit-ia-live-20261103-210136.json` pour les preuves récentes.
+
 ## Opérations réalisées
 
 - Vérification confidentielle de la configuration OpenRouter : clé renseignée par le propriétaire, modèle `openrouter/free` confirmé. Aucun affichage ou remplacement de clé par l’agent.

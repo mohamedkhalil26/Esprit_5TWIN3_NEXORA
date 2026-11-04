@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nexora-config
+data:
+  APP_NAME: NEXORA
+  APP_ENV: production
+  APP_DEBUG: "false"
+  APP_URL: https://nexora.example.invalid
+  LOG_CHANNEL: stderr
+  DB_CONNECTION: mysql
+  DB_HOST: mysql
+  DB_PORT: "3306"
+  DB_DATABASE: solarshare
+  DB_USERNAME: nexora
+  SESSION_DRIVER: database
+  CACHE_STORE: database
+  QUEUE_CONNECTION: database
+  MAIL_MAILER: smtp
+  MAIL_SCHEME: smtp
+  MAIL_HOST: smtp.gmail.com
+  MAIL_PORT: "587"
+  MAIL_REQUIRE_TLS: "true"
+  OPENROUTER_MODEL: openrouter/free
+  PHP_MAX_EXECUTION_TIME: "90"

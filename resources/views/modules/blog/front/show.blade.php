@@ -19,6 +19,8 @@
                     <form class="mb-3" method="POST" action="{{ route($isFavorite ? 'favorites.destroy' : 'favorites.store', $article) }}">@csrf
                     @if($isFavorite) @method('DELETE') @endif
                     <button class="btn btn-outline-success"><i class="bi bi-bookmark"></i> {{ $isFavorite ? 'Retirer des favoris' : 'Enregistrer dans mes favoris' }}</button></form>
+                    <a class="btn btn-outline-primary mb-3" href="{{ route('ai.front.show', ['module' => 'blog', 'article_id' => $article->id]) }}"><i class="bi bi-stars me-1" aria-hidden="true"></i>Résumer ou expliquer cet article</a>
+                    <a class="btn btn-outline-primary mb-3" href="{{ route('ai.quiz.show', $article) }}"><i class="bi bi-question-circle me-1" aria-hidden="true"></i>Faire le quiz</a>
                     @endauth
                     <article class="card form-card mb-5">
                         @if ($article->image)

@@ -51,7 +51,10 @@ def render_diagrams(text, mmdc):
         'lineColor': '#587b66', 'clusterBkg': '#f8faf6', 'clusterBorder': '#c7d8cb',
     }, 'flowchart': {'curve': 'linear', 'nodeSpacing': 24, 'rankSpacing': 38}}), encoding='utf-8')
     browser = TMP / 'browser.json'
-    browser.write_text(json.dumps({'executablePath': 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'}), encoding='utf-8')
+    browser.write_text(json.dumps({
+        'executablePath': 'C:/Program Files/Google/Chrome/Application/chrome.exe',
+        'args': ['--no-sandbox', '--disable-gpu', '--disable-dev-shm-usage'],
+    }), encoding='utf-8')
     images = []
     for i, block in enumerate(blocks, 1):
         source = TMP / f'diagram-{i}.mmd'
@@ -81,10 +84,10 @@ def page_header(canvas, doc):
     canvas.line(42, height - 39, width - 42, height - 39)
     canvas.setFont('Arial-Bold', 9)
     canvas.setFillColor(GREEN)
-    canvas.drawString(42, height - 29, 'SOLARSHARE  /  VALIDATION FINALE')
+    canvas.drawString(42, height - 29, 'NEXORA  /  VALIDATION FINALE')
     canvas.setFont('Arial', 8)
     canvas.setFillColor(MUTED)
-    canvas.drawString(42, 27, 'ESPRIT - Applications Web Avancées | 30 octobre 2026')
+    canvas.drawString(42, 27, 'ESPRIT - Applications Web Avancées | 3 novembre 2026')
     canvas.drawRightString(width - 42, 27, str(doc.page))
 
 
@@ -110,14 +113,14 @@ def create_pdf(images):
     ])
     story = [Spacer(1, 92), Paragraph('SolarShare', ParagraphStyle('Cover',fontName='Arial-Bold',fontSize=40,leading=48,textColor=GREEN)), Spacer(1,15), Paragraph('Dossier DevOps<br/>Validation finale', ParagraphStyle('CoverSub',fontName='Arial',fontSize=25,leading=33,textColor=TEXT)), Spacer(1,25)]
     status = [
-        ['28 tests / 184 assertions', '70 contrôles HTTP réels'],
-        ['4 emails fictifs dans Mailpit', '13 contrôles SMTP et 2FA réussis'],
-        ['5 assistants IA testés réellement', 'Modèle OpenRouter : openrouter/free'],
-        ['GitHub Actions : CI réelle réussie', 'Aucun déploiement revendiqué'],
+        ['37 tests / 224 assertions réussis', '70 contrôles HTTP (preuve antérieure)'],
+        ['Gmail SMTP à revalider en réception', '13 contrôles SMTP/2FA antérieurs'],
+        ['5 appels live : HTTP 429, aucun JSON', 'Modèle demandé : openrouter/free'],
+        ['CI GitHub réussie historiquement', 'Aucun push ni déploiement actuel'],
     ]
     table = Table([[Paragraph(inline(x),styles['body']) for x in row] for row in status], colWidths=[(w-96)/2]*2)
     table.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,-1),colors.HexColor('#f0f5ef')),('BOX',(0,0),(-1,-1),0.6,colors.HexColor('#cad9cd')),('VALIGN',(0,0),(-1,-1),'TOP'),('LEFTPADDING',(0,0),(-1,-1),13),('RIGHTPADDING',(0,0),(-1,-1),13),('TOPPADDING',(0,0),(-1,-1),11),('BOTTOMPADDING',(0,0),(-1,-1),8)]))
-    story += [table, Spacer(1,35), Paragraph('Applications Web Avancées - ESPRIT', styles['sub']), Paragraph('Échéance : semaine du 2 novembre 2026<br/>Édition du 30 octobre 2026 - Africa/Tunis', styles['body']), Spacer(1,18), Paragraph('Ce dossier distingue les contrôles exécutés, les tests simulés et les configurations externes encore nécessaires. Les données et secrets du projet ne sont pas inclus.', styles['small']), PageBreak()]
+    story += [table, Spacer(1,35), Paragraph('Applications Web Avancées - ESPRIT', styles['sub']), Paragraph('Échéance : semaine du 2 novembre 2026<br/>Édition du 3 novembre 2026 - Africa/Tunis', styles['body']), Spacer(1,18), Paragraph('État courant : les tests locaux sont passés, mais OpenRouter a refusé les cinq requêtes de clôture avec HTTP 429. Le statut CI cité dans le corps est historique. Consulter le rapport de clôture avant de présenter les preuves. Aucun secret ni donnée personnelle n’est inclus.', styles['small']), PageBreak()]
     lines = SOURCE.read_text(encoding='utf-8').splitlines()
     sections = [line[3:] for line in lines if line.startswith('## ')]
     story += [Paragraph('Sommaire', styles['section'])]

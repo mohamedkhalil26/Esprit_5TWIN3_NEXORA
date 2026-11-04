@@ -10,6 +10,10 @@
         'breadcrumb' => ['Équipements' => route('front.equipements.index'), $equipement->nom => route('front.equipements.show', $equipement), 'Réservation' => null],
     ])
 
+    <div class="container px-4 px-lg-5 pt-3 text-end">
+        <a class="btn btn-outline-primary btn-sm" href="{{ route('ai.front.show', ['module' => 'locations', 'date_debut' => request('date_debut'), 'date_fin' => request('date_fin')]) }}"><i class="bi bi-stars me-1" aria-hidden="true"></i>Besoin d’aide pour comparer ?</a>
+    </div>
+
     <section class="py-5 bg-cream">
         <div class="container px-4 px-lg-5">
             <div class="row g-4 justify-content-center">

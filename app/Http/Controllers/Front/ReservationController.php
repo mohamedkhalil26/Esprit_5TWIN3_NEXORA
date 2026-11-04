@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ReservationRequest;
 use App\Models\Equipement;
 use App\Models\Reservation;
+use App\Services\Ai\Notifications\SmartNotificationService;
 use App\Services\ReservationService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -52,6 +53,7 @@ class ReservationController extends Controller
             'montant_total' => $jours * $equipement->prix_jour,
             'statut' => 'en_attente',
         ]);
+        app(SmartNotificationService::class)->create($request->user(), 'reservation', 'Demande de réservation enregistrée', 'Votre demande de réservation n°'.$reservation->id.' est enregistrée et attend sa confirmation.', 'reservation:'.$reservation->id.':created', $reservation);
 
         return redirect()
             ->route('front.reservations.show', $reservation)

@@ -1,0 +1,130 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: node-exporter
+spec:
+  selector:
+    matchLabels: { app: node-exporter }
+  template:
+    metadata:
+      labels: { app: node-exporter }
+    spec:
+      hostNetwork: true
+      hostPID: true
+      containers:
+        - name: node-exporter
+          image: prom/node-exporter:v1.8.2
+          args: ["--path.rootfs=/host"]
+          ports:
+            - { name: metrics, containerPort: 9100, hostPort: 9100 }
+          volumeMounts:
+            - { name: root, mountPath: /host, readOnly: true, mountPropagation: HostToContainer }
+      volumes:
+        - name: root
+          hostPath: { path: /, type: Directory }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-exporter
+spec:
+  selector: { app: node-exporter }
+  ports: [{ name: metrics, port: 9100, targetPort: metrics }]
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: blackbox-config
+data:
+  blackbox.yml: |
+    modules:
+      http_2xx:
+        prober: http
+        timeout: 5s
+        http:
+          valid_status_codes: []
+          method: GET
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blackbox-exporter
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: blackbox-exporter }
+  template:
+    metadata:
+      labels: { app: blackbox-exporter }
+    spec:
+      containers:
+        - name: blackbox
+          image: prom/blackbox-exporter:v0.25.0
+          args: ["--config.file=/etc/blackbox/blackbox.yml"]
+          ports: [{ name: metrics, containerPort: 9115 }]
+          volumeMounts: [{ name: config, mountPath: /etc/blackbox, readOnly: true }]
+      volumes: [{ name: config, configMap: { name: blackbox-config } }]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blackbox-exporter
+spec:
+  selector: { app: blackbox-exporter }
+  ports: [{ name: metrics, port: 9115, targetPort: metrics }]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube-state-metrics
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: kube-state-metrics }
+  template:
+    metadata:
+      labels: { app: kube-state-metrics }
+    spec:
+      serviceAccountName: kube-state-metrics
+      containers:
+        - name: metrics
+          image: registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.13.0
+          ports: [{ name: metrics, containerPort: 8080 }]
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: kube-state-metrics
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: nexora-kube-state-metrics
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "nodes", "namespaces", "services", "persistentvolumeclaims", "persistentvolumes"]
+    verbs: ["list", "watch"]
+  - apiGroups: ["apps"]
+    resources: ["deployments", "daemonsets", "statefulsets", "replicasets"]
+    verbs: ["list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: nexora-kube-state-metrics
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: nexora-kube-state-metrics
+subjects:
+  - kind: ServiceAccount
+    name: kube-state-metrics
+    namespace: nexora-monitoring
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kube-state-metrics
+spec:
+  selector: { app: kube-state-metrics }
+  ports: [{ name: metrics, port: 8080, targetPort: metrics }]

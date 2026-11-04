@@ -87,12 +87,30 @@ class SecurityController extends Controller
         return redirect()->intended($user->isAdmin() ? route('admin.dashboard') : route('home'));
     }
 
+    public function showSetup(Request $request, Google2FA $totp)
+    {
+        $pending = $request->session()->get('two_factor_setup');
+        if ($request->user()->two_factor_confirmed_at || ! $pending || $pending['expires'] < time()) {
+            $request->session()->forget('two_factor_setup');
+
+            return redirect()->route('profile.edit');
+        }
+
+        return $this->setupResponse($request, $totp, $pending['secret']);
+    }
+
     public function setup(Request $request, Google2FA $totp)
     {
         $request->validate(['password' => 'required|current_password']);
         abort_if($request->user()->two_factor_confirmed_at, 409);
         $secret = $totp->generateSecretKey(32);
         $request->session()->put('two_factor_setup', ['secret' => $secret, 'expires' => time() + 600]);
+
+        return $this->setupResponse($request, $totp, $secret);
+    }
+
+    private function setupResponse(Request $request, Google2FA $totp, string $secret)
+    {
         $uri = $totp->getQRCodeUrl('SolarShare', $request->user()->email, $secret);
         $writer = new Writer(new ImageRenderer(new RendererStyle(240), new SvgImageBackEnd));
 

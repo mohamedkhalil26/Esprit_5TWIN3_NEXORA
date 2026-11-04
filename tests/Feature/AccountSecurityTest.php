@@ -18,6 +18,25 @@ class AccountSecurityTest extends TestCase
 {
     use RefreshDatabase;
 
+    public function test_setup_page_can_be_opened_and_reloaded_without_regenerating_the_secret(): void
+    {
+        $this->get('/profil/2fa')->assertRedirect(route('login'));
+        $user = User::factory()->create();
+        $this->actingAs($user)->get('/profil/2fa')->assertRedirect(route('profile.edit'));
+        $this->post(route('two-factor.setup'), ['password' => 'password'])->assertOk();
+        $pending = session('two_factor_setup');
+        $this->get('/profil/2fa')->assertOk()->assertSee('data:image/svg+xml;base64,', false)
+            ->assertHeader('Cache-Control', 'no-store, private');
+        $this->assertSame($pending, session('two_factor_setup'));
+        $this->from('/profil/2fa')->post(route('two-factor.confirm'), ['code' => 'invalid'])
+            ->assertRedirect('/profil/2fa')->assertSessionHasErrors('code');
+        $this->get('/profil/2fa')->assertOk()->assertSee('Code de sécurité');
+        $this->get('/profil/2fa/confirmer')->assertRedirect(route('two-factor.show'));
+        $this->withSession(['two_factor_setup' => ['secret' => $pending['secret'], 'expires' => time() - 1]])
+            ->get('/profil/2fa')->assertRedirect(route('profile.edit'))->assertSessionMissing('two_factor_setup');
+        $this->assertNull($user->fresh()->two_factor_secret);
+    }
+
     public function test_password_email_limits_do_not_block_login_and_remain_enforced(): void
     {
         Notification::fake();
@@ -80,7 +99,10 @@ class AccountSecurityTest extends TestCase
         $this->get($url)->assertRedirect(route('home'));
         $this->assertTrue($user->fresh()->hasVerifiedEmail());
         $this->get(route('admin.dashboard'))->assertForbidden();
-        $this->actingAs(User::factory()->admin()->create())->get(route('admin.dashboard'))->assertOk();
+        $this->actingAs(User::factory()->admin()->create())->get(route('admin.dashboard'))
+            ->assertOk()
+            ->assertSee('Activité récente')
+            ->assertSee('Nouvelle inscription :');
     }
 
     public function test_password_reset_uses_one_time_token(): void

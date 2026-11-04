@@ -11,7 +11,7 @@
             <div class="col-sm-6">
                 @php($breadcrumbItems = json_decode($__env->yieldContent('breadcrumb-data'), true) ?? [])
                 <ol class="breadcrumb float-sm-end mb-0">
-                    <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Accueil</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('Accueil') }}</a></li>
                     @if ($breadcrumbItems)
                         @foreach ($breadcrumbItems as $item)
                             @if ($item['active'] ?? false)

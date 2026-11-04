@@ -28,10 +28,22 @@ class EvenementController extends Controller
         return view('modules.evenements.admin.evenements.index', compact('evenements'));
     }
 
-    public function create(): View
+    public function create(Request $request): View
     {
         return view('modules.evenements.admin.evenements.create', [
-            'evenement' => new Evenement(['statut' => 'planifie', 'prix' => 0, 'capacite' => 20]),
+            'evenement' => new Evenement(array_filter([
+                'statut' => 'planifie',
+                'prix' => $request->query('prix', 0),
+                'capacite' => $request->query('capacite', 20),
+                'titre' => $request->query('titre'),
+                'description' => $request->query('description'),
+                'type' => $request->query('type'),
+                'lieu' => $request->query('lieu'),
+                'ville' => $request->query('ville'),
+                // Suggested dates remain blank until the administrator confirms real availability.
+                'date_debut' => null,
+                'date_fin' => null,
+            ], static fn ($value) => $value !== null)),
         ]);
     }
 

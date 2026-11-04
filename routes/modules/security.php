@@ -20,6 +20,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profil', [ProfileController::class, 'update'])->name('profile.update');
     Route::put('/profil/mot-de-passe', [ProfileController::class, 'password'])->middleware('throttle:5,1,profile-password:')->name('profile.password');
     Route::delete('/profil', [ProfileController::class, 'destroy'])->middleware('throttle:5,1,profile-delete:')->name('profile.destroy');
+    Route::get('/profil/2fa', [SecurityController::class, 'showSetup'])->name('two-factor.show');
+    Route::get('/profil/2fa/confirmer', fn () => redirect()->route('two-factor.show'));
     Route::post('/profil/2fa', [SecurityController::class, 'setup'])->middleware('throttle:5,1,totp-setup:')->name('two-factor.setup');
     Route::post('/profil/2fa/confirmer', [SecurityController::class, 'confirm'])->middleware('throttle:5,1,totp-confirm:')->name('two-factor.confirm');
     Route::delete('/profil/2fa', [SecurityController::class, 'disable'])->middleware('throttle:5,1,totp-disable:')->name('two-factor.disable');

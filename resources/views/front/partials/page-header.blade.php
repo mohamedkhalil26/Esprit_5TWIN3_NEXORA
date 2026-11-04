@@ -12,7 +12,7 @@
         @isset($breadcrumb)
             <nav aria-label="Fil d'Ariane" class="mt-3">
                 <ol class="breadcrumb small">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Accueil</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('Accueil') }}</a></li>
                     @foreach ($breadcrumb as $libelle => $lien)
                         @if ($lien)
                             <li class="breadcrumb-item"><a href="{{ $lien }}">{{ $libelle }}</a></li>

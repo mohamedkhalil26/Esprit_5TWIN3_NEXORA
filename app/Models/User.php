@@ -5,6 +5,7 @@ namespace App\Models;
 use Database\Factories\UserFactory;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -28,6 +29,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'role',
         'telephone',
         'ville',
+        'locale',
         'password',
     ];
 
@@ -69,6 +71,16 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(Article::class, 'article_user')->withTimestamps();
     }
 
+    public function aiConversations()
+    {
+        return $this->hasMany(AiConversation::class);
+    }
+
+    public function eventBlueprints(): HasMany
+    {
+        return $this->hasMany(EventBlueprint::class);
+    }
+
     /**
      * Initiales affichées dans les avatars
      * (ex. "Hamza Mbarki" => "HM").
@@ -96,5 +108,35 @@ class User extends Authenticatable implements MustVerifyEmail
     public function reponsesReclamations()
     {
         return $this->hasMany(ReponseReclamation::class, 'user_id');
+    }
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class, 'user_id');
+    }
+
+    public function participations()
+    {
+        return $this->hasMany(Participation::class, 'user_id');
+    }
+
+    public function aiFeatureRuns()
+    {
+        return $this->hasMany(AiFeatureRun::class);
+    }
+
+    public function aiFeedback()
+    {
+        return $this->hasMany(AiFeedback::class);
+    }
+
+    public function notificationPreference()
+    {
+        return $this->hasOne(NotificationPreference::class);
+    }
+
+    public function smartNotifications()
+    {
+        return $this->hasMany(SmartNotification::class);
     }
 }

@@ -10,6 +10,13 @@
         'breadcrumb' => ['Événements' => null],
     ])
 
+        <div class="container px-4 px-lg-5 pt-3 text-end d-flex justify-content-end gap-2">
+            <a class="btn btn-primary btn-sm" href="{{ route('ai.recommendations.events') }}"><i class="bi bi-stars me-1" aria-hidden="true"></i>{{ __('nexora.common.events_link') }}</a>
+    @auth
+            <a class="btn btn-outline-primary btn-sm" href="{{ route('ai.front.show', 'evenements') }}"><i class="bi bi-stars me-1" aria-hidden="true"></i>Découvrir avec l’assistant</a>
+    @endauth
+        </div>
+
     <section class="py-5 bg-cream">
         <div class="container px-4 px-lg-5">
             <form method="GET" class="card form-card mb-4">

@@ -10,6 +10,10 @@
         'breadcrumb' => ['Mes réclamations' => route('front.reclamations.index'), 'N°'.$reclamation->id => null],
     ])
 
+    <div class="container px-4 px-lg-5 pt-3 text-end">
+        <a class="btn btn-outline-primary btn-sm" href="{{ route('ai.front.show', ['module' => 'reclamations', 'claim_id' => $reclamation->id]) }}"><i class="bi bi-stars me-1" aria-hidden="true"></i>Comprendre le statut de cette réclamation</a>
+    </div>
+
     <section class="py-5 bg-cream">
         <div class="container px-4 px-lg-5">
             <div class="row justify-content-center">

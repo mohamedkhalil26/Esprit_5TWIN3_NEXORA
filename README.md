@@ -1,4 +1,4 @@
-# ☀️ SolarShare
+# ☀️ NEXORA
 
 Plateforme de **location et de partage entre particuliers** de petits équipements d'énergie renouvelable
 (panneaux solaires portables, batteries, petites éoliennes…).
@@ -24,7 +24,7 @@ Projet Applications Web Avancées 2025-2026, réalisé en Laravel 12 par une éq
 - **Front office :** [Creative — Start Bootstrap](https://startbootstrap.com/theme/creative)
 - **Back office :** [AdminLTE 4](https://adminlte.io)
 
-Personnalisation SolarShare : palette vert et jaune solaire, logo SVG, menus, contenus et pages adaptés.
+Personnalisation NEXORA : palette verte et jaune solaire, logo SVG, menus, contenus et pages adaptés.
 Les fichiers concernés sont `public/css/solarshare-front.css`, `public/css/solarshare-admin.css` et `public/images/logo.svg`.
 
 ## Installation (démo depuis le dépôt Git)
@@ -32,8 +32,8 @@ Les fichiers concernés sont `public/css/solarshare-front.css`, `public/css/sola
 Prérequis : PHP 8.2 ou plus (XAMPP), Composer, MySQL.
 
 ```bash
-git clone <url-du-depot> solarshare
-cd solarshare
+git clone <url-du-depot> nexora
+cd nexora
 composer install
 copy .env.example .env
 php artisan key:generate
@@ -41,10 +41,10 @@ php artisan key:generate
 
 1. Créer la base **`solarshare`** dans phpMyAdmin (interclassement `utf8mb4_unicode_ci`).
 2. Vérifier `DB_USERNAME` et `DB_PASSWORD` dans `.env`. Avec XAMPP, c'est `root` sans mot de passe.
-3. Créer les tables avec les données de démonstration, puis lancer le serveur :
+3. Sur une base neuve et isolée réservée à la démonstration, créer les tables et les données de démonstration, puis lancer le serveur. Ne lancez pas de seeder sur une base historique ou partagée :
 
 ```bash
-php artisan migrate:fresh --seed
+php artisan migrate --seed
 php artisan serve
 ```
 
@@ -72,6 +72,13 @@ Chaque membre travaille **uniquement dans ses propres fichiers**. La base les d�
 | `database/seeders/<Module>ModuleSeeder.php` | appelé par `DatabaseSeeder` s'il existe |
 
 La découverte des hooks est faite par `app/Support/Modules.php`.
+
+## Soutenance et validation
+
+- [Démonstration soutenance](docs/DEMO_SOUTENANCE.md) : parcours FO/BO des dix features IA.
+- [Validation de la grille](docs/VALIDATION_SOUTENANCE.md) : critères, preuves et limites vérifiables.
+- [Installation locale](docs/INSTALLATION.md) et [architecture IA](docs/AI_ARCHITECTURE.md).
+- [Rapport de tests](docs/TEST_REPORT.md) et [avancement](docs/PROGRESS.md).
 
 ### Héritage Blade
 
