@@ -35,8 +35,8 @@ class OpenRouterService
     }
 
     /**
-     * @param array<string, mixed> $context
-     * @param array<string, mixed> $rules
+     * @param  array<string, mixed>  $context
+     * @param  array<string, mixed>  $rules
      * @return array<string, mixed>
      */
     public function generate(
@@ -302,7 +302,6 @@ class OpenRouterService
                 );
 
                 throw new RuntimeException($this->invalidOutputMessage());
-
             } catch (AIOutputValidationException|UnexpectedValueException) {
                 $parsingMs += $this->elapsedMilliseconds($parseStartedAt);
 
@@ -373,7 +372,8 @@ class OpenRouterService
             '/free[- ]models[- ]per[- ](?:day|minute)|(?:account|shared|global)[^\n]{0,60}(?:quota|rate limit)/',
             $details
         )) {
-            return 'global_free_quota';        }
+            return 'global_free_quota';
+        }
 
         if (preg_match(
             '/(?:model|provider)[^\n]{0,60}(?:quota|rate limit|throttl)|(?:quota|rate limit|throttl)[^\n]{0,60}(?:model|provider)/',
