@@ -1,0 +1,67 @@
+name: Validation SolarShare
+
+on:
+  push:
+  pull_request:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      APP_ENV: testing
+      DB_CONNECTION: sqlite
+      DB_DATABASE: ':memory:'
+      DB_URL: ''
+      CACHE_STORE: array
+      SESSION_DRIVER: array
+      MAIL_MAILER: array
+      QUEUE_CONNECTION: sync
+      OPENROUTER_API_KEY: ''
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, dom, xml, xmlwriter, curl, pdo_sqlite, pdo_mysql, fileinfo
+          coverage: none
+          tools: composer:v2
+      - name: Préparer l’environnement de test
+        run: |
+          cp .env.example .env
+          mkdir -p bootstrap/cache storage/framework/{cache,sessions,views} storage/logs
+      - name: Installer les dépendances PHP verrouillées
+        run: composer install --no-interaction --prefer-dist --no-progress
+      - run: php artisan key:generate
+      - run: composer validate --strict
+      - run: composer audit
+      - name: Vérifier la qualité PHP
+        run: vendor/bin/pint --test
+      - name: Vérifier les migrations sans base persistante
+        run: php artisan migrate --force
+      - name: Tests PHPUnit et migrations SQLite en mémoire
+        run: php artisan test --log-junit=storage/test-results.xml
+      - name: Vérifier les routes et les vues Blade
+        run: |
+          php artisan route:cache
+          php artisan route:clear
+          php artisan view:cache
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: solarshare-assets
+          path: public/build
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: resultats-phpunit
+          path: storage/test-results.xml

@@ -36,7 +36,7 @@ class ReponseReclamationRequest extends FormRequest
 
                 $reclamation = $this->route('reclamation') ?? Reclamation::find($this->input('reclamation_id'));
 
-                if ($reclamation?->estFermee() && blank($this->input('nouveau_statut'))) {
+                if ($reclamation?->estFermee() && (! $this->routeIs('admin.*') || blank($this->input('nouveau_statut')))) {
                     $validator->errors()->add('message', 'Cette réclamation est fermée : il n\'est plus possible d\'y répondre.');
                 }
             },

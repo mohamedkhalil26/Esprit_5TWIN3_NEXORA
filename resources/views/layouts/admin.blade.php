@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'Tableau de bord') | Back office SolarShare</title>
+    <title>@yield('title', __('Tableau de bord')) | {{ __('Back office') }} SolarShare</title>
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/logo.svg') }}">
 
     {{-- Template BackOffice : AdminLTE 4 — https://adminlte.io --}}

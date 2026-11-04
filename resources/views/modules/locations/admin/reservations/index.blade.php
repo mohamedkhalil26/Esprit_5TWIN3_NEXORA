@@ -9,6 +9,7 @@
 @section('content')
     <x-admin.card title="Liste des réservations" icon="calendar-check" body-class="p-0">
         <x-slot:tools>
+            <a href="{{ route('ai.admin.show', 'locations') }}" class="btn btn-outline-primary btn-sm me-1"><i class="bi bi-stars me-1"></i>Analyser l’activité</a>
             <a href="{{ route('admin.reservations.create') }}" class="btn btn-primary btn-sm">
                 <i class="bi bi-plus-lg me-1"></i>Nouvelle réservation
             </a>

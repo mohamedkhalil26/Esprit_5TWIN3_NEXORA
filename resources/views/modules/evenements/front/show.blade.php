@@ -10,6 +10,12 @@
         'breadcrumb' => ['Événements' => route('front.evenements.index'), \Illuminate\Support\Str::limit($evenement->titre, 30) => null],
     ])
 
+    @auth
+        <div class="container px-4 px-lg-5 pt-3 text-end">
+            <a class="btn btn-outline-primary btn-sm" href="{{ route('ai.front.show', ['module' => 'evenements', 'event_id' => $evenement->id]) }}"><i class="bi bi-stars me-1" aria-hidden="true"></i>Poser une question sur cet événement</a>
+        </div>
+    @endauth
+
     <section class="py-5 bg-cream">
         <div class="container px-4 px-lg-5">
             <div class="row g-4">

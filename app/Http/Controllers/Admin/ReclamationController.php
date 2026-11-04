@@ -10,7 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class ReclamationController extends Controller
@@ -102,14 +102,16 @@ class ReclamationController extends Controller
 
     private function enregistrerFichier(UploadedFile $fichier): string
     {
-        $nom = Str::uuid().'.'.$fichier->getClientOriginalExtension();
-        $fichier->move(public_path('uploads/reclamations'), $nom);
-
-        return 'uploads/reclamations/'.$nom;
+        return $fichier->store('reclamations', 'local');
     }
 
     private function supprimerFichier(Reclamation $reclamation): void
     {
+        if ($reclamation->piece_jointe && str_starts_with($reclamation->piece_jointe, 'reclamations/')) {
+            Storage::disk('local')->delete($reclamation->piece_jointe);
+
+            return;
+        }
         if ($reclamation->piece_jointe && File::exists(public_path($reclamation->piece_jointe))) {
             File::delete(public_path($reclamation->piece_jointe));
         }

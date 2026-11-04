@@ -30,6 +30,8 @@
         @endforeach
     </div>
 
+    <div class="text-end mb-3 d-flex justify-content-end gap-2"><a class="btn btn-primary btn-sm" href="{{ route('admin.reclamations.intelligence') }}"><i class="bi bi-graph-up-arrow me-1"></i>Centre d’intelligence</a><a class="btn btn-outline-primary btn-sm" href="{{ route('ai.admin.show', 'reclamations') }}"><i class="bi bi-stars me-1"></i>Synthétiser les réclamations</a></div>
+
     <x-admin.card title="Liste des réclamations"
                   icon="exclamation-diamond"
                   body-class="p-0">

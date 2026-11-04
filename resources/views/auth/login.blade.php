@@ -1,12 +1,12 @@
 @extends('layouts.front')
 
-@section('title', 'Connexion')
+@section('title', __('Connexion'))
 @section('body-class', 'nav-solid')
 
 @section('content')
     @include('front.partials.page-header', [
-        'title' => 'Connexion',
-        'subtitle' => 'Accédez à votre espace SolarShare',
+        'title' => __('Connexion'),
+        'subtitle' => __('Accédez à votre espace SolarShare'),
     ])
 
     <section class="py-5 bg-cream">
@@ -19,7 +19,7 @@
                                 @csrf
 
                                 <div class="mb-3">
-                                    <label for="email" class="form-label">Adresse e-mail</label>
+                                    <label for="email" class="form-label">{{ __('Adresse e-mail') }}</label>
                                     <div class="input-group has-validation">
                                         <span class="input-group-text"><i class="bi bi-envelope"></i></span>
                                         <input type="email" id="email" name="email" value="{{ old('email') }}"
@@ -31,7 +31,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="password" class="form-label">Mot de passe</label>
+                                    <label for="password" class="form-label">{{ __('Mot de passe') }}</label>
                                     <div class="input-group has-validation">
                                         <span class="input-group-text"><i class="bi bi-lock"></i></span>
                                         <input type="password" id="password" name="password"
@@ -44,16 +44,16 @@
 
                                 <div class="form-check mb-4">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" @checked(old('remember'))>
-                                    <label class="form-check-label" for="remember">Se souvenir de moi</label>
+                                    <label class="form-check-label" for="remember">{{ __('Se souvenir de moi') }}</label>
                                 </div>
 
                                 <button type="submit" class="btn btn-primary w-100 py-2">
-                                    <i class="bi bi-box-arrow-in-right me-1"></i>Se connecter
+                                    <i class="bi bi-box-arrow-in-right me-1"></i>{{ __('Se connecter') }}
                                 </button>
-                            </form>
+                            </form><p class="mt-3"><a href="{{ route('password.request') }}">{{ __('Mot de passe oublié ?') }}</a></p>
 
                             <p class="text-center small text-muted mt-4 mb-0">
-                                Pas encore de compte ? <a href="{{ route('register') }}">Inscrivez-vous</a>
+                                {{ __('Pas encore de compte ?') }} <a href="{{ route('register') }}">{{ __('Inscrivez-vous') }}</a>
                             </p>
                         </div>
                     </div>

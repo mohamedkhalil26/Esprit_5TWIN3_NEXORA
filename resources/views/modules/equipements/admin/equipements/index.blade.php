@@ -9,6 +9,7 @@
 @section('content')
     <x-admin.card title="Liste des équipements" icon="lightning-charge" body-class="p-0">
         <x-slot:tools>
+            <a href="{{ route('ai.admin.show', 'equipements') }}" class="btn btn-outline-primary btn-sm me-1"><i class="bi bi-stars me-1"></i>Analyser le catalogue</a>
             <a href="{{ route('admin.equipements.create') }}" class="btn btn-primary btn-sm">
                 <i class="bi bi-plus-lg me-1"></i>Nouvel équipement
             </a>

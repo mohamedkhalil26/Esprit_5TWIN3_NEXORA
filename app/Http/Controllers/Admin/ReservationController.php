@@ -7,6 +7,7 @@ use App\Http\Requests\ReservationRequest;
 use App\Models\Equipement;
 use App\Models\Reservation;
 use App\Models\User;
+use App\Services\ReservationService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -42,7 +43,7 @@ class ReservationController extends Controller
 
     public function store(ReservationRequest $request): RedirectResponse
     {
-        $reservation = Reservation::create($this->avecMontant($request->validated()));
+        $reservation = app(ReservationService::class)->save($request->validated());
 
         return redirect()
             ->route('admin.reservations.show', $reservation)
@@ -66,7 +67,7 @@ class ReservationController extends Controller
 
     public function update(ReservationRequest $request, Reservation $reservation): RedirectResponse
     {
-        $reservation->update($this->avecMontant($request->validated()));
+        app(ReservationService::class)->save($request->validated(), $reservation);
 
         return redirect()
             ->route('admin.reservations.show', $reservation)

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PaiementRequest;
 use App\Models\Paiement;
 use App\Models\Reservation;
+use App\Services\PaymentService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -51,7 +52,7 @@ class PaiementController extends Controller
 
     public function store(PaiementRequest $request): RedirectResponse
     {
-        $paiement = Paiement::create($request->validated());
+        $paiement = app(PaymentService::class)->save($request->validated());
 
         return redirect()
             ->route('admin.reservations.show', $paiement->reservation_id)
@@ -75,7 +76,7 @@ class PaiementController extends Controller
 
     public function update(PaiementRequest $request, Paiement $paiement): RedirectResponse
     {
-        $paiement->update($request->validated());
+        app(PaymentService::class)->save($request->validated(), $paiement);
 
         return redirect()
             ->route('admin.paiements.show', $paiement)

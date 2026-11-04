@@ -2,6 +2,11 @@
  * SolarShare — scripts communs aux deux templates
  */
 document.addEventListener('DOMContentLoaded', () => {
+    // Traduction des liens d’évitement ajoutés par AdminLTE.
+    document.querySelectorAll('a[href="#main"], a[href="#navigation"]').forEach((link) => {
+        if (link.textContent.trim() === 'Skip to main content') link.textContent = 'Aller au contenu principal';
+        if (link.textContent.trim() === 'Skip to navigation') link.textContent = 'Aller à la navigation';
+    });
     // Fenêtre de confirmation de suppression (partagée par tous les modules)
     const modal = document.getElementById('confirmDeleteModal');
     if (modal) {

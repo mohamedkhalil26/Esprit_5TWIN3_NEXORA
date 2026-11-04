@@ -10,6 +10,12 @@
         'breadcrumb' => ['Équipements' => null],
     ])
 
+    @auth
+        <div class="container px-4 px-lg-5 pt-3 text-end">
+            <a class="btn btn-outline-primary btn-sm" href="{{ route('ai.front.show', 'equipements') }}"><i class="bi bi-stars me-1" aria-hidden="true"></i>Conseiller IA équipements</a>
+        </div>
+    @endauth
+
     <section class="py-5 bg-cream">
         <div class="container px-4 px-lg-5">
             <div class="row g-4">
@@ -56,6 +62,7 @@
 
                 {{-- Résultats --}}
                 <div class="col-lg-9">
+                    <div class="d-flex flex-wrap justify-content-end gap-2 mb-3"><a class="btn btn-outline-primary btn-sm" href="{{ route('ai.recommendations.energy') }}"><i class="bi bi-stars me-1" aria-hidden="true"></i>{{ __('nexora.common.energy_link') }}</a>@auth<a class="btn btn-outline-primary btn-sm" href="{{ route('ai.recommendations.booking') }}"><i class="bi bi-calendar-check me-1" aria-hidden="true"></i>{{ __('nexora.common.booking_link') }}</a>@endauth</div>
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <span class="text-muted">{{ $equipements->total() }} équipement(s) disponible(s)</span>
                         <form method="GET" class="d-flex align-items-center">

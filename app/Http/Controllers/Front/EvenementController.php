@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Evenement;
 use App\Models\Participation;
+use App\Services\Ai\Notifications\SmartNotificationService;
+use App\Services\ParticipationService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -43,15 +45,8 @@ class EvenementController extends Controller
             ['commentaire' => 'commentaire']
         );
 
-        if (! $evenement->inscriptionsOuvertes()) {
-            return back()->with('error', 'Les inscriptions à cet événement sont fermées.');
-        }
-
-        // Réinscription possible après une annulation
-        Participation::updateOrCreate(
-            ['evenement_id' => $evenement->id, 'user_id' => $request->user()->id],
-            ['statut' => 'inscrit', 'commentaire' => $request->input('commentaire')]
-        );
+        app(ParticipationService::class)->register($evenement, $request->user()->id, $request->input('commentaire'));
+        app(SmartNotificationService::class)->create($request->user(), 'event', 'Inscription confirmée', 'Votre inscription à « '.$evenement->titre.' » est enregistrée.', 'event:'.$evenement->id.':user:'.$request->user()->id.':registered', $evenement);
 
         return back()->with('success', 'Votre inscription est confirmée. À bientôt !');
     }

@@ -23,6 +23,11 @@
     --bs-btn-active-border-color: var(--ss-green-dark);
 }
 
+body {
+    color: #20332a;
+    font-family: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
 .btn-outline-primary {
     --bs-btn-color: var(--ss-green);
     --bs-btn-border-color: var(--ss-green);
@@ -111,4 +116,99 @@
 .detail-list dt {
     color: #6c757d;
     font-weight: 500;
+}
+
+.dashboard-chart-wrap {
+    overflow-x: auto;
+}
+
+.dashboard-chart {
+    align-items: end;
+    display: flex;
+    gap: clamp(.75rem, 3vw, 2rem);
+    justify-content: space-around;
+    min-height: 10rem;
+    min-width: 30rem;
+    padding: 1rem .5rem .25rem;
+}
+
+.dashboard-chart-month {
+    align-items: center;
+    display: flex;
+    flex: 1 0 3rem;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.dashboard-chart-bars {
+    align-items: end;
+    border-bottom: 1px solid #dce5df;
+    display: flex;
+    gap: .35rem;
+    height: 8rem;
+}
+
+.dashboard-chart-bar {
+    border-radius: .35rem .35rem 0 0;
+    display: block;
+    min-height: 2px;
+    width: clamp(.75rem, 2vw, 1.25rem);
+}
+
+.dashboard-chart-bar-reservations,
+.dashboard-legend-reservations {
+    background-color: var(--ss-green);
+}
+
+.dashboard-chart-bar-claims,
+.dashboard-legend-claims {
+    background-color: #e7ad24;
+}
+
+.dashboard-chart-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.dashboard-legend-swatch {
+    border-radius: .2rem;
+    display: inline-block;
+    height: .75rem;
+    margin-inline-end: .35rem;
+    vertical-align: -.05rem;
+    width: .75rem;
+}
+
+.ai-trend-chart {
+    align-items: end;
+    border-bottom: 1px solid #e1e8e3;
+    display: flex;
+    gap: clamp(.35rem, 1.4vw, 1rem);
+    justify-content: space-around;
+    min-height: 11rem;
+    overflow-x: auto;
+    padding: .5rem .25rem 0;
+}
+.ai-trend-column {
+    align-items: center;
+    display: flex;
+    flex: 1 0 2rem;
+    flex-direction: column;
+    gap: .35rem;
+    min-width: 2rem;
+}
+.ai-trend-value, .ai-trend-period { color: #65746a; font-size: .72rem; white-space: nowrap; }
+.ai-trend-track { align-items: end; display: flex; height: 7rem; width: min(100%, 2rem); }
+.ai-trend-bar { border-radius: .4rem .4rem 0 0; display: block; min-height: 2px; width: 100%; }
+.ai-trend-bar-primary { background: #27814d; }
+.ai-trend-bar-warning { background: #e5ad24; }
+.ai-trend-bar-danger { background: #c64f4f; }
+.ai-trend-bar-success { background: #517c65; }
+.ai-category-list { display: grid; gap: 1rem; }
+.ai-category-row .progress { height: .55rem; background: #edf1ee; }
+
+@media (max-width: 575.98px) {
+    .ai-trend-chart { justify-content: flex-start; }
+    .ai-trend-column { flex-basis: 2.4rem; }
 }

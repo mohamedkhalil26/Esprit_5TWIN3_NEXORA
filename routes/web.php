@@ -19,9 +19,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 */
 Route::middleware('guest')->group(function () {
     Route::get('/connexion', [AuthController::class, 'showLogin'])->name('login');
-    Route::post('/connexion', [AuthController::class, 'login'])->name('login.store');
+    Route::post('/connexion', [AuthController::class, 'login'])->middleware('throttle:5,1,login:')->name('login.store');
     Route::get('/inscription', [AuthController::class, 'showRegister'])->name('register');
-    Route::post('/inscription', [AuthController::class, 'register'])->name('register.store');
+    Route::post('/inscription', [AuthController::class, 'register'])->middleware('throttle:5,1,register:')->name('register.store');
 });
 
 Route::post('/deconnexion', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
@@ -31,7 +31,7 @@ Route::post('/deconnexion', [AuthController::class, 'logout'])->middleware('auth
 | Back office (administrateurs)
 |--------------------------------------------------------------------------
 */
-Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 });
 

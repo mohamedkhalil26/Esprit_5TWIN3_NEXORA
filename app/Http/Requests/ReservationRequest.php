@@ -71,7 +71,7 @@ class ReservationRequest extends FormRequest
                     $validator->errors()->add('equipement_id', 'Vous ne pouvez pas réserver votre propre équipement.');
                 }
 
-                $statut = $this->input('statut', 'en_attente');
+                $statut = $this->estAdmin() ? $this->input('statut', 'en_attente') : 'en_attente';
                 $chevauchement = Reservation::chevauchant(
                     $equipement->id,
                     $this->input('date_debut'),

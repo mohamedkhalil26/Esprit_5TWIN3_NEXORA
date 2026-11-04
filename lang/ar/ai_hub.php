@@ -1,0 +1,36 @@
+<?php
+
+return [
+    'title' => 'مركز الذكاء الاصطناعي',
+    'nav_label' => 'مركز الذكاء الاصطناعي',
+    'nav_menu' => 'أدوات ذكية',
+    'nav_description' => 'أدوات للطاقة الشمسية',
+    'hero_title' => 'ذكاء يرافق رحلتك نحو الطاقة الشمسية',
+    'home_title' => 'خيارات شمسية أسهل في كل خطوة',
+    'home_subtitle' => 'اكتشف أدوات SolarShare للاختيار والحجز والتعلم والمشاركة.',
+    'subtitle' => 'أدوات مفيدة للعثور على المعدات المناسبة والتخطيط لمشاريعك والاستفادة من الطاقة الشمسية.',
+    'eyebrow' => 'SolarShare · أدوات ذكية',
+    'section_eyebrow' => 'اكتشف SolarShare',
+    'section_title' => 'مساعدة لكل مشروع',
+    'section_note' => 'اختر أداة وابدأ خلال لحظات.',
+    'explore_modules' => 'اكتشف الأدوات',
+    'open_feature' => 'اكتشف',
+    'sign_in_to_start' => 'سجّل الدخول للبدء',
+    'sign_in_hint' => 'بعض الأدوات متاحة لأعضاء SolarShare.',
+    'sign_in' => 'تسجيل الدخول',
+    'privacy' => 'تتحقق SolarShare من التوفر والحجوزات. راجع الاقتراحات قبل اتخاذ أي إجراء.',
+    'card_labels' => [
+        'equipements' => 'معدات شمسية',
+        'locations' => 'الحجز',
+        'reclamations' => 'المساعدة والدعم',
+        'evenements' => 'الفعاليات',
+        'blog' => 'مقالات ونصائح',
+    ],
+    'modules' => [
+        'equipements' => ['front_title' => 'SolarMatch', 'front_description' => 'اعثر على معدات شمسية تناسب ميزانيتك وموقعك واحتياجاتك.', 'back_title' => 'رادار طلب المعدات'],
+        'locations' => ['front_title' => 'Smart Booking Optimizer', 'front_description' => 'قارن المعدات المتاحة في تواريخك وضمن ميزانيتك قبل الحجز.', 'back_title' => 'رؤى الحجوزات'],
+        'reclamations' => ['front_title' => 'Complaint Doctor', 'front_description' => 'وضّح طلبك وراجع الاقتراحات قبل إرساله.', 'back_title' => 'مركز ذكاء الشكاوى'],
+        'evenements' => ['front_title' => 'Event Matchmaker', 'front_description' => 'اكتشف الفعاليات الشمسية المناسبة لاهتماماتك ومنطقتك.', 'back_title' => 'منشئ مخطط الفعالية'],
+        'blog' => ['front_title' => 'مساعد المدونة', 'front_description' => 'استكشف المقالات المنشورة واحصل على إجابات مستندة إلى محتواها.', 'back_title' => 'مساعد SEO والتحرير'],
+    ],
+];

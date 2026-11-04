@@ -8,8 +8,10 @@ use App\Models\Evenement;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
 class EvenementController extends Controller
@@ -26,10 +28,22 @@ class EvenementController extends Controller
         return view('modules.evenements.admin.evenements.index', compact('evenements'));
     }
 
-    public function create(): View
+    public function create(Request $request): View
     {
         return view('modules.evenements.admin.evenements.create', [
-            'evenement' => new Evenement(['statut' => 'planifie', 'prix' => 0, 'capacite' => 20]),
+            'evenement' => new Evenement(array_filter([
+                'statut' => 'planifie',
+                'prix' => $request->query('prix', 0),
+                'capacite' => $request->query('capacite', 20),
+                'titre' => $request->query('titre'),
+                'description' => $request->query('description'),
+                'type' => $request->query('type'),
+                'lieu' => $request->query('lieu'),
+                'ville' => $request->query('ville'),
+                // Suggested dates remain blank until the administrator confirms real availability.
+                'date_debut' => null,
+                'date_fin' => null,
+            ], static fn ($value) => $value !== null)),
         ]);
     }
 
@@ -72,7 +86,13 @@ class EvenementController extends Controller
             $donnees['image'] = $this->enregistrerImage($request->file('image'));
         }
 
-        $evenement->update($donnees);
+        DB::transaction(function () use ($evenement, $donnees) {
+            $locked = Evenement::lockForUpdate()->findOrFail($evenement->id);
+            if ($donnees['capacite'] < $locked->nb_inscrits) {
+                throw ValidationException::withMessages(['capacite' => 'La capacité ne peut pas être inférieure au nombre d’inscrits.']);
+            }
+            $locked->update($donnees);
+        }, 3);
 
         return redirect()
             ->route('admin.evenements.show', $evenement)
@@ -91,7 +111,7 @@ class EvenementController extends Controller
 
     private function enregistrerImage(UploadedFile $fichier): string
     {
-        $nom = Str::uuid().'.'.$fichier->getClientOriginalExtension();
+        $nom = Str::uuid().'.'.$fichier->extension();
         $fichier->move(public_path('uploads/evenements'), $nom);
 
         return 'uploads/evenements/'.$nom;

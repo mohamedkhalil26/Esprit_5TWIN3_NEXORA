@@ -12,6 +12,26 @@ class Reclamation extends Model
 {
     use HasFactory;
 
+    protected static function booted(): void
+    {
+        static::updated(function (Reclamation $record) {
+            $changes = [];
+            foreach (['statut', 'priorite', 'categorie'] as $field) {
+                if ($record->wasChanged($field)) {
+                    $changes[$field] = ['avant' => $record->getRawOriginal($field), 'apres' => $record->$field];
+                }
+            }
+            if ($changes) {
+                ReclamationHistory::create(['reclamation_id' => $record->id, 'user_id' => auth()->id(), 'changes' => $changes]);
+            }
+        });
+    }
+
+    public function historique(): HasMany
+    {
+        return $this->hasMany(ReclamationHistory::class)->with('auteur')->latest('id');
+    }
+
     protected $fillable = [
         'user_id',
         'sujet',
@@ -97,7 +117,7 @@ class Reclamation extends Model
 
     public function getPieceJointeUrlAttribute(): ?string
     {
-        return $this->piece_jointe ? asset($this->piece_jointe) : null;
+        return $this->piece_jointe ? route('reclamations.attachment', $this) : null;
     }
 
     public function estFermee(): bool

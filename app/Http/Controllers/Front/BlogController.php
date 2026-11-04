@@ -29,7 +29,7 @@ class BlogController extends Controller
 
     public function show(Article $article): View
     {
-        abort_unless($article->statut === 'publie', 404);
+        abort_unless(Article::publies()->whereKey($article->id)->exists(), 404);
 
         $article->increment('vues');
         $article->load(['auteur', 'commentairesApprouves.auteur']);
@@ -46,7 +46,7 @@ class BlogController extends Controller
 
     public function commenter(CommentaireRequest $request, Article $article): RedirectResponse
     {
-        abort_unless($article->statut === 'publie', 404);
+        abort_unless(Article::publies()->whereKey($article->id)->exists(), 404);
 
         $article->commentaires()->create([
             'user_id' => $request->user()->id,

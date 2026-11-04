@@ -1,0 +1,282 @@
+[
+  {
+    "verification": "Accueil réel HTTP 200",
+    "resultat": "OK"
+  },
+  {
+    "verification": "CSRF actif : mutation sans token refusée",
+    "resultat": "OK"
+  },
+  {
+    "verification": "Connexion membre et session",
+    "resultat": "OK"
+  },
+  {
+    "verification": "Accès administrateur interdit au membre",
+    "resultat": "OK"
+  },
+  {
+    "verification": "Connexion administrateur réelle",
+    "resultat": "OK"
+  },
+  {
+    "verification": "Back Office liste et création : categories",
+    "resultat": "OK"
+  },
+  {
+    "verification": "Back Office liste et création : equipements",
+    "resultat": "OK"
+  },
+  {
+    "verification": "Back Office liste et création : reservations",
+    "resultat": "OK"
+  },
+  {
+    "verification": "Back Office liste et création : paiements",
+    "resultat": "OK"
+  },
+  {
+    "verification": "Back Office liste et création : reclamations",
+    "resultat": "OK"
+  },
+  {
+    "verification": "Back Office liste et création : reponses",
+    "resultat": "OK"
+  },
+  {
+    "verification": "Back Office liste et création : evenements",
+    "resultat": "OK"
+  },
+  {
+    "verification": "Back Office liste et création : participations",
+    "resultat": "OK"
+  },
+  {
+    "verification": "Back Office liste et création : articles",
+    "resultat": "OK"
+  },
+  {
+    "verification": "Back Office liste et création : commentaires",
+    "resultat": "OK"
+  },
+  {
+    "verification": "Inscription réelle sans élévation de rôle",
+    "resultat": "OK"
+  },
+  {
+    "verification": "Compte non vérifié bloqué sur réservation",
+    "resultat": "OK"
+  },
+  {
+    "verification": "Email généré localement et lien signé utilisable",
+    "resultat": "OK"
+  },
+  {
+    "verification": "Profil modifiable par formulaire réel",
+    "resultat": "OK"
+  },
+  {
+    "verification": "M1 création équipement par formulaire",
+    "resultat": "OK"
+  },
+  {
+    "verification": "M1 modification équipement",
+    "resultat": "OK"
+  },
+  {
+    "verification": "M1 comparateur réel",
+    "resultat": "OK"
+  },
+  {
+    "verification": "M1 création catégorie réelle",
+    "resultat": "OK"
+  },
+  {
+    "verification": "M2 réservation réelle et montant calculé",
+    "resultat": "OK"
+  },
+  {
+    "verification": "M2 conflit refusé malgré statut injecté",
+    "resultat": "OK"
+  },
+  {
+    "verification": "M2 calendrier avec estimation et conflit",
+    "resultat": "OK"
+  },
+  {
+    "verification": "M2 enregistrement paiement réel",
+    "resultat": "OK"
+  },
+  {
+    "verification": "M2 dépassement du solde refusé",
+    "resultat": "OK"
+  },
+  {
+    "verification": "M3 dépôt réel de réclamation",
+    "resultat": "OK"
+  },
+  {
+    "verification": "M3 isolation des dossiers membres",
+    "resultat": "OK"
+  },
+  {
+    "verification": "M3 réponse admin et historique",
+    "resultat": "OK"
+  },
+  {
+    "verification": "M4 création événement via formulaire admin",
+    "resultat": "OK"
+  },
+  {
+    "verification": "M4 inscription événement réelle",
+    "resultat": "OK"
+  },
+  {
+    "verification": "M4 capacité atteinte refusée",
+    "resultat": "OK"
+  },
+  {
+    "verification": "M4 annulation et place libérée",
+    "resultat": "OK"
+  },
+  {
+    "verification": "M5 article publié et commentaire réel",
+    "resultat": "OK"
+  },
+  {
+    "verification": "M5 ajout favori et page personnelle",
+    "resultat": "OK"
+  },
+  {
+    "verification": "M5 retrait du favori",
+    "resultat": "OK"
+  },
+  {
+    "verification": "M5 publication programmée inaccessible avant sa date",
+    "resultat": "OK"
+  },
+  {
+    "verification": "M5 création et publication via formulaire admin",
+    "resultat": "OK"
+  },
+  {
+    "verification": "IA equipements : formulaire et absence de clé explicite",
+    "resultat": "OK"
+  },
+  {
+    "verification": "IA locations : formulaire et absence de clé explicite",
+    "resultat": "OK"
+  },
+  {
+    "verification": "IA reclamations : formulaire et absence de clé explicite",
+    "resultat": "OK"
+  },
+  {
+    "verification": "IA reclamations : autorisation admin",
+    "resultat": "OK"
+  },
+  {
+    "verification": "IA evenements : formulaire et absence de clé explicite",
+    "resultat": "OK"
+  },
+  {
+    "verification": "IA evenements : autorisation admin",
+    "resultat": "OK"
+  },
+  {
+    "verification": "IA blog : formulaire et absence de clé explicite",
+    "resultat": "OK"
+  },
+  {
+    "verification": "IA blog : autorisation admin",
+    "resultat": "OK"
+  },
+  {
+    "verification": "2FA configuration réelle avec QR local",
+    "resultat": "OK"
+  },
+  {
+    "verification": "2FA activation TOTP et huit codes de récupération",
+    "resultat": "OK"
+  },
+  {
+    "verification": "2FA connexion bloque avant le second facteur",
+    "resultat": "OK"
+  },
+  {
+    "verification": "2FA code déjà consommé refusé",
+    "resultat": "OK"
+  },
+  {
+    "verification": "2FA connexion par nouveau TOTP réel",
+    "resultat": "OK"
+  },
+  {
+    "verification": "2FA connexion par récupération réelle",
+    "resultat": "OK"
+  },
+  {
+    "verification": "2FA récupération réutilisée refusée",
+    "resultat": "OK"
+  },
+  {
+    "verification": "2FA désactivation protégée réelle",
+    "resultat": "OK"
+  },
+  {
+    "verification": "Mot de passe oublié : notification générée",
+    "resultat": "OK"
+  },
+  {
+    "verification": "Réinitialisation réelle via lien email généré",
+    "resultat": "OK"
+  },
+  {
+    "verification": "Ancien mot de passe refusé",
+    "resultat": "OK"
+  },
+  {
+    "verification": "Nouveau mot de passe accepté",
+    "resultat": "OK"
+  },
+  {
+    "verification": "Profil : téléversement et stockage réel de photo",
+    "resultat": "OK"
+  },
+  {
+    "verification": "Profil : photo servie sur le stockage de recette",
+    "resultat": "OK"
+  },
+  {
+    "verification": "Profil : changement réel du mot de passe depuis le profil",
+    "resultat": "OK"
+  },
+  {
+    "verification": "Profil : connexion avec le mot de passe modifié",
+    "resultat": "OK"
+  },
+  {
+    "verification": "Suppression du compte lié refusée sans détruire les participations",
+    "resultat": "OK"
+  },
+  {
+    "verification": "M3 téléversement réel de pièce jointe privée",
+    "resultat": "OK"
+  },
+  {
+    "verification": "M3 téléchargement réel autorisé au propriétaire",
+    "resultat": "OK"
+  },
+  {
+    "verification": "M3 téléchargement réel interdit à un autre membre",
+    "resultat": "OK"
+  },
+  {
+    "verification": "M3 téléchargement réel autorisé à l’administrateur",
+    "resultat": "OK"
+  },
+  {
+    "verification": "M5 publication incomplète refusée par le formulaire réel",
+    "resultat": "OK"
+  }
+]

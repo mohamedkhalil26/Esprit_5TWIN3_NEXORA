@@ -12,13 +12,13 @@ use App\Http\Controllers\Front\ReservationController as FrontReservationControll
 use Illuminate\Support\Facades\Route;
 
 // Back office : CRUD complet des deux entités
-Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('reservations', ReservationController::class);
     Route::resource('paiements', PaiementController::class);
 });
 
 // Front office : espace locataire
-Route::middleware('auth')->name('front.reservations.')->group(function () {
+Route::middleware(['auth', 'verified'])->name('front.reservations.')->group(function () {
     Route::get('/mes-reservations', [FrontReservationController::class, 'index'])->name('index');
     Route::get('/reserver', [FrontReservationController::class, 'create'])->name('create');
     Route::post('/reserver', [FrontReservationController::class, 'store'])->name('store');

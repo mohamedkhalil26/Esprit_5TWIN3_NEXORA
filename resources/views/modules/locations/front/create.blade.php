@@ -10,6 +10,10 @@
         'breadcrumb' => ['Équipements' => route('front.equipements.index'), $equipement->nom => route('front.equipements.show', $equipement), 'Réservation' => null],
     ])
 
+    <div class="container px-4 px-lg-5 pt-3 text-end">
+        <a class="btn btn-outline-primary btn-sm" href="{{ route('ai.front.show', ['module' => 'locations', 'date_debut' => request('date_debut'), 'date_fin' => request('date_fin')]) }}"><i class="bi bi-stars me-1" aria-hidden="true"></i>Besoin d’aide pour comparer ?</a>
+    </div>
+
     <section class="py-5 bg-cream">
         <div class="container px-4 px-lg-5">
             <div class="row g-4 justify-content-center">
@@ -28,7 +32,7 @@
                                     <div class="col-md-6">
                                         <label for="date_debut" class="form-label">Du <span class="text-danger">*</span></label>
                                         <input type="date" id="date_debut" name="date_debut" min="{{ today()->format('Y-m-d') }}"
-                                               value="{{ old('date_debut') }}"
+                                               value="{{ old('date_debut', request('date_debut')) }}"
                                                class="form-control @error('date_debut') is-invalid @enderror">
                                         @error('date_debut')
                                             <div class="invalid-feedback">{{ $message }}</div>
@@ -37,7 +41,7 @@
                                     <div class="col-md-6">
                                         <label for="date_fin" class="form-label">Au <span class="text-danger">*</span></label>
                                         <input type="date" id="date_fin" name="date_fin" min="{{ today()->format('Y-m-d') }}"
-                                               value="{{ old('date_fin') }}"
+                                               value="{{ old('date_fin', request('date_fin')) }}"
                                                class="form-control @error('date_fin') is-invalid @enderror">
                                         @error('date_fin')
                                             <div class="invalid-feedback">{{ $message }}</div>

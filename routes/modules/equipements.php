@@ -12,7 +12,7 @@ use App\Http\Controllers\Front\CatalogueController;
 use Illuminate\Support\Facades\Route;
 
 // Back office : CRUD complet des deux entités
-Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('categories', CategorieController::class)
         ->parameters(['categories' => 'categorie']);
 
