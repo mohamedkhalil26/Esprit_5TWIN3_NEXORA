@@ -16,7 +16,7 @@
     <div class="container px-4 px-lg-5" style="max-width: 1180px">
         <div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-4">
             <div>
-                <span class="badge text-bg-primary mb-2"><i class="bi bi-stars me-1" aria-hidden="true"></i>SolarShare</span>
+                <span class="badge text-bg-primary mb-2"><i class="bi bi-stars me-1" aria-hidden="true"></i>NEXORA</span>
                 <h1 class="h2 mb-2">{{ __($titleKey) }}</h1>
                 <p class="text-muted mb-0">{{ __('nexora.'.$mode.'.intro') }}</p>
             </div>
@@ -127,3 +127,4 @@ document.querySelectorAll('form[method="GET"]').forEach(form => form.addEventLis
 }));
 </script>
 @endpush
+

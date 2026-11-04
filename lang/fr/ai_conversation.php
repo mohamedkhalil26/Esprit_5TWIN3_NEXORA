@@ -93,6 +93,7 @@ return [
         'model_not_ready' => 'Aucun modèle IA gratuit n’est actuellement validé pour ce compte.',
         'rate_limited' => 'OpenRouter a limité cette requête (429). Aucune tentative de secours n’a été faite. Le quota gratuit peut être partagé entre les modèles; réessayez après son renouvellement.',
         'provider_unavailable' => 'Le fournisseur IA est momentanément indisponible.',
+        'provider_timeout' => 'Le fournisseur IA n’a pas répondu dans le délai imparti. Réessayez dans quelques instants.',
         'invalid_configuration' => 'La configuration du service IA doit être vérifiée par un administrateur.',
         'credits_exhausted' => 'Le service IA n’a pas de crédit disponible. Contactez un administrateur.',
         'model_forbidden' => 'Le modèle configuré n’est pas autorisé pour ce compte.',
