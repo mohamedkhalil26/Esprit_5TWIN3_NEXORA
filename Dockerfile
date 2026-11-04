@@ -6,7 +6,7 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
-FROM composer:2 AS vendor
+FROM composer:2.8 AS vendor
 WORKDIR /src
 COPY composer.json composer.lock ./
 RUN composer install --no-dev --no-interaction --no-progress --prefer-dist --no-scripts --optimize-autoloader
@@ -14,6 +14,7 @@ COPY . .
 RUN composer dump-autoload --no-dev --classmap-authoritative --no-scripts
 
 FROM php:8.3-fpm-alpine AS app
+
 RUN apk add --no-cache icu-libs libpng libjpeg-turbo freetype libzip oniguruma \
     && apk add --no-cache --virtual .build-deps $PHPIZE_DEPS icu-dev libpng-dev libjpeg-turbo-dev freetype-dev libzip-dev oniguruma-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
