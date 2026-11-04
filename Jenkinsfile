@@ -41,12 +41,11 @@ pipeline {
         }
       }
     }
-    stage('Docker build') {
-      when { branch 'main' }
-      steps {
+   stage('Docker build') {
+    steps {
         sh 'docker build -t "$DOCKER_IMAGE:${BUILD_NUMBER}" .'
-      }
     }
+}
   }
   post { always { archiveArtifacts artifacts: 'public/build/**', allowEmptyArchive: true } }
 }
