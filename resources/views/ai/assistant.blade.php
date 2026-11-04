@@ -41,7 +41,7 @@
 <a class="btn btn-outline-success" href="{{ route('front.equipements.show', $item) }}">Voir la fiche</a>
 @if($module === 'locations')<a class="btn btn-success" href="{{ route('front.reservations.create', ['equipement' => $item->id, 'date_debut' => $data['date_debut'], 'date_fin' => $data['date_fin']]) }}">Préparer la réservation</a>@endif</div>
 @empty<p>Aucune recommandation pertinente dans les candidats disponibles.</p>@endforelse
-<p class="mt-3">Les caractéristiques et prix affichés proviennent du catalogue SolarShare. La disponibilité sera revérifiée lors de la réservation.</p>
+<p class="mt-3">Les caractéristiques et prix affichés proviennent du catalogue NEXORA. La disponibilité sera revérifiée lors de la réservation.</p>
 @else
 <p>Ces propositions ne sont pas enregistrées. Relisez-les et modifiez-les avant de les valider. Le statut de publication des articles reste inchangé.</p>
 @if($module === 'reclamations')<div class="alert alert-light border"><strong>Pourquoi :</strong> {{ $result['explication'] ?? '' }}@if(!empty($result['informations_manquantes']))<div class="mt-2"><strong>Informations à vérifier :</strong><ul class="mb-0">@foreach($result['informations_manquantes'] as $missing)<li>{{ $missing }}</li>@endforeach</ul></div>@endif</div>@endif
@@ -63,3 +63,4 @@
 @push('scripts')
 <script>document.getElementById('ai-form').addEventListener('submit', function () { document.getElementById('ai-submit').disabled = true; document.getElementById('ai-loading').classList.remove('d-none'); });</script>
 @endpush
+

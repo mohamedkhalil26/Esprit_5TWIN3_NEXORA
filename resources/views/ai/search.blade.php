@@ -4,7 +4,7 @@
 
 @section('content')
 <section class="py-5 mt-5"><div class="container" style="max-width:1100px">
-    <h1 class="h3">Recherche intelligente SolarShare</h1>
+    <h1 class="h3">Recherche intelligente NEXORA</h1>
     <p class="text-muted">Recherche locale dans les ressources accessibles. Les résultats privés restent limités à votre compte.</p>
     <form method="GET" action="{{ route('ai.search') }}" class="row g-2 mb-4">
         <div class="col-md-7"><label class="visually-hidden" for="global-search">Recherche</label><input id="global-search" class="form-control" name="q" value="{{ $query }}" maxlength="200" placeholder="Équipement, événement ou article…"></div>
