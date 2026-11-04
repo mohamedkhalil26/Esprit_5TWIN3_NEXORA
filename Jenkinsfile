@@ -1,6 +1,6 @@
 pipeline {
   agent any
-  parameters { booleanParam(name: 'RUN_SONAR', defaultValue: false, description: 'Exécuter l’analyse SonarQube Cloud avec les credentials Jenkins configurés') }
+  parameters { booleanParam(name: 'RUN_SONAR', defaultValue: true, description: 'Exécuter l’analyse SonarQube Cloud avec les credentials Jenkins configurés') }
   options { timestamps(); disableConcurrentBuilds(); timeout(time: 30, unit: 'MINUTES') }
   environment {
     DOCKER_IMAGE = 'nexora-app'
